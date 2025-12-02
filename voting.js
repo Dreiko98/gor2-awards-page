@@ -361,46 +361,61 @@ function submitAllVotes() {
         timestamp: new Date().toISOString()
     };
     
-    // Send to Netlify Forms (or your backend)
-    sendVotesToServer(submission)
-        .then(() => {
-            console.log('Votes submitted successfully:', submission);
-            
-            // Store submission locally as backup
-            localStorage.setItem('gor2_submission', JSON.stringify(submission));
-            
-            // Show confirmation modal
-            showConfirmationModal(userData.nombre);
-        })
-        .catch((error) => {
-            console.error('Error submitting votes:', error);
-            alert('Hubo un error al enviar los votos. Por favor, inténtalo de nuevo.');
-        });
+    // Store submission locally as backup
+    localStorage.setItem('gor2_submission', JSON.stringify(submission));
+    
+    // Detect if we're in production (Netlify) or development (localhost)
+    const isProduction = window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1';
+    
+    if (isProduction) {
+        // In production, send to Netlify Forms
+        sendVotesToServer(submission)
+            .then(() => {
+                console.log('Votes submitted successfully to Netlify:', submission);
+                showConfirmationModal(userData.nombre);
+            })
+            .catch((error) => {
+                console.error('Error submitting votes:', error);
+                alert('Hubo un error al enviar los votos. Por favor, inténtalo de nuevo.');
+            });
+    } else {
+        // In development, just show success (votes saved in localStorage)
+        console.log('DESARROLLO: Votos guardados localmente:', submission);
+        console.log('📝 En producción (Netlify), estos votos se enviarán al servidor');
+        showConfirmationModal(userData.nombre);
+    }
 }
 
 // Function to send votes to server/Netlify Forms
 async function sendVotesToServer(submission) {
-    // Convert submission to form data for Netlify Forms
-    const formData = new FormData();
-    formData.append('form-name', 'gor2-votes');
-    formData.append('nombre', submission.user.nombre);
-    formData.append('apellidos', submission.user.apellidos);
-    formData.append('email', submission.user.email);
-    formData.append('timestamp', submission.timestamp);
-    formData.append('votes', JSON.stringify(submission.votes));
-    
-    // Send to Netlify Forms
-    const response = await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData).toString()
-    });
-    
-    if (!response.ok) {
-        throw new Error('Network response was not ok');
+    try {
+        // Prepare data for Netlify Forms
+        const formData = new URLSearchParams();
+        formData.append('form-name', 'gor2-votes');
+        formData.append('nombre', submission.user.nombre);
+        formData.append('apellidos', submission.user.apellidos);
+        formData.append('email', submission.user.email);
+        formData.append('timestamp', submission.timestamp);
+        formData.append('votes', JSON.stringify(submission.votes));
+        
+        // Send to Netlify Forms
+        const response = await fetch('/', {
+            method: 'POST',
+            headers: { 
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: formData.toString()
+        });
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        return response;
+    } catch (error) {
+        console.error('Error in sendVotesToServer:', error);
+        throw error;
     }
-    
-    return response;
 }
 
 function showConfirmationModal(nombre) {

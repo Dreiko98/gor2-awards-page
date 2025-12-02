@@ -1,5 +1,35 @@
 # Changelog - GOR2 Awards 2025
 
+## Versión 2.4.2 - Fix Critical: Error al Enviar Votos (2 Diciembre 2025)
+
+### 🔧 Corrección Crítica
+- ✅ **Error de envío solucionado** - "Hubo un error al enviar los votos"
+- ✅ **Detección de entorno** - Automática entre desarrollo/producción
+- ✅ **Funciona en localhost** - Sin intentar conectar a Netlify
+- ✅ **Funciona en Netlify** - Envío correcto a Netlify Forms
+- ✅ **Formulario mejorado** - Campos honeypot y form-name añadidos
+- ✅ **Mejor error handling** - Logs detallados en consola
+
+### 🎯 Comportamiento según entorno
+
+#### En Desarrollo (localhost):
+- Votos guardados solo en localStorage
+- Modal de confirmación funciona
+- NO intenta enviar a Netlify (evita error)
+- Mensaje en consola explicativo
+
+#### En Producción (Netlify):
+- Votos enviados a Netlify Forms
+- Backup en localStorage
+- Modal de confirmación funciona
+- Datos visibles en dashboard
+
+### 📚 Nueva Documentación
+- ✅ **TROUBLESHOOTING.md** - Guía completa de resolución de problemas
+- ✅ Explicación del funcionamiento por entorno
+- ✅ Steps para verificar funcionamiento
+- ✅ Debug guide para producción
+
 ## Versión 2.4.1 - Fix Proporción Logo (2 Diciembre 2025)
 
 ### 🎨 Corrección Visual
