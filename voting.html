@@ -109,6 +109,27 @@
         </div>
     </div>
 
+    <!-- Recap Modal -->
+    <div id="recapModal" class="modal">
+        <div class="modal-content modal-recap">
+            <div class="modal-header">
+                <h2>📋 Resumen de tus Votos</h2>
+                <button id="closeRecap" class="close-modal-btn">✕</button>
+            </div>
+            <div class="recap-info">
+                <p class="recap-name">Votante: <span id="recapVoterName"></span></p>
+                <p class="recap-total">Total de votos: <span id="recapTotalVotes"></span>/21</p>
+            </div>
+            <div id="recapGrid" class="recap-grid">
+                <!-- Recap will be loaded here -->
+            </div>
+            <div class="recap-footer">
+                <button id="confirmRecap" class="modal-btn modal-btn-primary">CONFIRMAR Y ENVIAR</button>
+                <button id="editVotes" class="modal-btn modal-btn-secondary">EDITAR VOTOS</button>
+            </div>
+        </div>
+    </div>
+
     <script src="voting.js"></script>
 </body>
 </html>

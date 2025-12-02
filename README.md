@@ -29,7 +29,10 @@ git push origin main
 
 - **Diseño moderno con temática GOR2**: Colores naranja y negro del logo con efectos visuales impactantes
 - **Sistema de login elegante**: Control de acceso con animaciones fluidas
+- **🔒 Protección con contraseña**: Sistema de validación para controlar el acceso
+- **⏱️ Countdown de apertura**: Bloqueo automático con cuenta atrás hasta la fecha límite (8 Dic 2025, 17:00h)
 - **21 Categorías**: Votación completa para todas las categorías del grupo
+- **📋 Recap de votos**: Ventana de resumen antes de enviar con opción de editar
 - **Navegación cinematográfica**: Sistema de transiciones suaves entre categorías
 - **💾 Guardado automático con Netlify Forms**: Los votos se guardan en el servidor (GRATIS)
 - **📊 Panel de administración**: Ver y exportar todos los votos

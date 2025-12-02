@@ -16,6 +16,43 @@
     <!-- Retro scanlines effect (opcional, puedes comentarlo si no te gusta) -->
     <div class="retro-scanlines"></div>
     
+    <!-- Countdown Overlay (only visible before deadline) -->
+    <div id="countdownOverlay" class="countdown-overlay">
+        <div class="countdown-content">
+            <div class="lock-icon">
+                <svg width="120" height="120" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 11H5C3.89543 11 3 11.8954 3 13V20C3 21.1046 3.89543 22 5 22H19C20.1046 22 21 21.1046 21 20V13C21 11.8954 20.1046 11 19 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M7 11V7C7 5.67392 7.52678 4.40215 8.46447 3.46447C9.40215 2.52678 10.6739 2 12 2C13.3261 2 14.5979 2.52678 15.5355 3.46447C16.4732 4.40215 17 5.67392 17 7V11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <h2 class="countdown-welcome">Bienvenido a las votaciones de los Gor2 Awards 2025</h2>
+            <h2 class="countdown-title">VOTACIONES BLOQUEADAS</h2>
+            <p class="countdown-subtitle">Las votaciones se abrirán en:</p>
+            <div class="countdown-timer">
+                <div class="time-unit">
+                    <span id="days" class="time-value">00</span>
+                    <span class="time-label">Días</span>
+                </div>
+                <div class="time-separator">:</div>
+                <div class="time-unit">
+                    <span id="hours" class="time-value">00</span>
+                    <span class="time-label">Horas</span>
+                </div>
+                <div class="time-separator">:</div>
+                <div class="time-unit">
+                    <span id="minutes" class="time-value">00</span>
+                    <span class="time-label">Minutos</span>
+                </div>
+                <div class="time-separator">:</div>
+                <div class="time-unit">
+                    <span id="seconds" class="time-value">00</span>
+                    <span class="time-label">Segundos</span>
+                </div>
+            </div>
+            <p class="countdown-date">📅 Apertura: 8 de Diciembre, 2025 - 17:00h</p>
+        </div>
+    </div>
+    
     <div class="login-container">
         <div class="logo-section">
             <img src="assets/logo_gor2.png" alt="GOR2 Logo" class="main-logo">
@@ -45,7 +82,7 @@
 
                 <div class="form-group">
                     <label for="password">CONTRASEÑA</label>
-                    <input type="password" id="password" name="password" required placeholder="Contraseña de acceso">
+                    <input type="password" id="password" name="password" required placeholder="Pregunta al administrador">
                 </div>
 
                 <button type="submit" class="submit-btn">

@@ -351,6 +351,11 @@ function submitAllVotes() {
         }
     }
     
+    // Show recap modal instead of sending directly
+    showRecapModal();
+}
+
+function confirmAndSendVotes() {
     // Get user data
     const userData = JSON.parse(localStorage.getItem('gor2_user'));
     
@@ -474,10 +479,76 @@ function closeAllCategoriesModal() {
     modal.classList.remove('active');
 }
 
+function showRecapModal() {
+    const modal = document.getElementById('recapModal');
+    const userData = JSON.parse(localStorage.getItem('gor2_user'));
+    const recapGrid = document.getElementById('recapGrid');
+    
+    // Update voter name and total
+    document.getElementById('recapVoterName').textContent = `${userData.nombre} ${userData.apellidos}`;
+    document.getElementById('recapTotalVotes').textContent = Object.keys(votes).length;
+    
+    // Clear previous content
+    recapGrid.innerHTML = '';
+    
+    // Show all votes
+    categories.forEach(category => {
+        const recapItem = document.createElement('div');
+        recapItem.className = 'recap-item';
+        
+        if (votes[category.id]) {
+            recapItem.classList.add('voted');
+            recapItem.innerHTML = `
+                <div class="recap-category">
+                    <span class="recap-number">${category.id}</span>
+                    <h3>${category.title}</h3>
+                </div>
+                <div class="recap-vote">
+                    <span class="vote-icon">✓</span>
+                    <span class="vote-name">${votes[category.id]}</span>
+                </div>
+            `;
+        } else {
+            recapItem.classList.add('not-voted');
+            recapItem.innerHTML = `
+                <div class="recap-category">
+                    <span class="recap-number">${category.id}</span>
+                    <h3>${category.title}</h3>
+                </div>
+                <div class="recap-vote">
+                    <span class="vote-icon">⚠</span>
+                    <span class="vote-name">Sin voto</span>
+                </div>
+            `;
+        }
+        
+        recapGrid.appendChild(recapItem);
+    });
+    
+    modal.classList.add('active');
+}
+
+function closeRecapModal() {
+    const modal = document.getElementById('recapModal');
+    modal.classList.remove('active');
+}
+
 // Close modal when clicking outside
 document.addEventListener('click', (e) => {
     const allCategoriesModal = document.getElementById('allCategoriesModal');
+    const recapModal = document.getElementById('recapModal');
     if (e.target === allCategoriesModal) {
         closeAllCategoriesModal();
     }
+    if (e.target === recapModal) {
+        closeRecapModal();
+    }
 });
+
+// Event listeners for recap modal buttons
+document.getElementById('closeRecap').addEventListener('click', closeRecapModal);
+document.getElementById('confirmRecap').addEventListener('click', () => {
+    closeRecapModal();
+    confirmAndSendVotes();
+});
+document.getElementById('editVotes').addEventListener('click', closeRecapModal);

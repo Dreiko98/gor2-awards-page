@@ -1,5 +1,57 @@
 # Changelog - GOR2 Awards 2025
 
+## Versión 2.6 - Recap de Votos + Countdown de Apertura (2 Diciembre 2025)
+
+### 🎯 Nueva Funcionalidad: Modal de Recap de Votos
+- ✅ **Ventana de resumen** - Muestra todos los votos antes de enviar
+- ✅ **Información del votante** - Nombre completo y total de votos
+- ✅ **Lista completa de categorías** - Con votos realizados y faltantes
+- ✅ **Indicadores visuales** - ✓ para votados, ⚠ para sin voto
+- ✅ **Opción de editar** - Botón para volver y modificar votos
+- ✅ **Confirmación final** - Botón "CONFIRMAR Y ENVIAR" para enviar
+
+### ⏱️ Nueva Funcionalidad: Countdown de Apertura
+- ✅ **Pantalla de bloqueo** - Overlay con candado antes de la fecha límite
+- ✅ **Cuenta atrás en tiempo real** - Días, horas, minutos, segundos
+- ✅ **Desenfoque del formulario** - Login bloqueado hasta la apertura
+- ✅ **Fecha límite configurable** - 8 Diciembre 2025, 17:00h
+- ✅ **Desbloqueo automático** - Se oculta al llegar la fecha
+- ✅ **Diseño atractivo** - Candado animado, timer estilo retro
+- ✅ **Responsive** - Adaptado para móviles
+
+### 🎨 Mejoras de UX
+- Usuarios ven exactamente qué votaron antes de enviar
+- Previene envíos accidentales sin revisar
+- Control temporal sobre cuándo se puede votar
+- Experiencia más profesional y organizada
+
+### 🔧 Detalles Técnicos
+- Modal de recap con scroll para 21 categorías
+- Countdown actualizado cada segundo
+- Clase `.locked` para desactivar formulario
+- Backdrop blur en overlay para efecto profesional
+
+## Versión 2.5 - Sistema de Contraseña (2 Diciembre 2025)
+
+### 🔒 Nueva Funcionalidad: Validación de Contraseña
+- ✅ **Contraseña obligatoria** - "Gor2#SaveOscar"
+- ✅ **Validación en cliente** - Verificación antes de acceder
+- ✅ **Mensaje de error claro** - Alerta si la contraseña es incorrecta
+- ✅ **Placeholder actualizado** - "Pregunta al administrador"
+- ✅ **Control de acceso** - Solo usuarios con contraseña pueden votar
+
+### 🎯 Comportamiento
+- Usuario ingresa sus datos + contraseña
+- Si contraseña incorrecta: ❌ Alerta y no permite acceso
+- Si contraseña correcta: ✅ Redirección a votación
+- Campo se limpia automáticamente si hay error
+
+### 🔐 Seguridad
+- Contraseña compartida para todo el grupo
+- Solo tú tienes la contraseña
+- Compartes con tus amigos para que puedan votar
+- Control simple pero efectivo
+
 ## Versión 2.4.2 - Fix Critical: Error al Enviar Votos (2 Diciembre 2025)
 
 ### 🔧 Corrección Crítica
