@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const DEV_MODE = false; // Cambia a 'false' antes de deployment
     
     // 🔐 CONTRASEÑA ADMIN para bypass del countdown
-    const ADMIN_PASSWORD = 'Gor2#SaveOscar!';
+    const ADMIN_PASSWORD = 'Gor2#SaveOscar';
     
     // Check if admin bypass is active
     let adminBypass = sessionStorage.getItem('gor2_admin_bypass') === 'true';
