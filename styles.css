@@ -62,6 +62,48 @@ body::after {
     opacity: 0.3;
 }
 
+/* Graffiti background para login page */
+.login-page::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('assets/background-optimized.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.15;
+    z-index: -2;
+    animation: subtleZoom 30s ease-in-out infinite alternate;
+    filter: blur(1px); /* Añade un ligero blur para efecto dreamy */
+}
+
+@keyframes subtleZoom {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.05);
+    }
+}
+
+/* Overlay para mejorar contraste */
+.login-page::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 50% 50%, transparent 0%, rgba(10, 10, 10, 0.7) 100%),
+        linear-gradient(180deg, rgba(10, 10, 10, 0.5) 0%, rgba(10, 10, 10, 0.9) 100%);
+    z-index: -1;
+    pointer-events: none;
+}
+
 /* ============================================
    LOGIN PAGE STYLES
    ============================================ */
@@ -73,19 +115,36 @@ body::after {
     padding: 20px;
     position: relative;
     min-height: 100vh;
+    overflow-y: auto; /* Permitir scroll vertical */
+    overflow-x: hidden; /* Evitar scroll horizontal */
 }
 
 .login-container {
     position: relative;
-    z-index: 1;
+    z-index: 100; /* Aumentado para estar sobre todo */
     max-width: 550px;
     width: 100%;
     text-align: center;
+    animation: containerEntrance 1s ease-out;
+    /* Asegurar visibilidad sobre el fondo */
+    isolation: isolate;
+}
+
+@keyframes containerEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .logo-section {
-    margin-bottom: 50px;
+    margin-bottom: 35px; /* Reducido de 50px */
     position: relative;
+    z-index: 100; /* Asegurar visibilidad */
 }
 
 .logo-section::before {
@@ -94,8 +153,8 @@ body::after {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 250px;
-    height: 250px;
+    width: 280px; /* Ajustado para logo rectangular */
+    height: 220px; /* Ajustado para proporción 427x329 */
     background: radial-gradient(circle, var(--glow-orange) 0%, transparent 70%);
     animation: pulse 3s ease-in-out infinite;
     z-index: -1;
@@ -113,12 +172,19 @@ body::after {
 }
 
 .main-logo {
-    width: 180px;
-    height: 180px;
-    margin-bottom: 30px;
+    width: 200px; /* Ancho base */
+    height: auto; /* Altura automática para mantener proporción */
+    margin-bottom: 25px; /* Reducido de 30px */
     filter: drop-shadow(0 0 30px var(--glow-orange));
-    animation: float 4s ease-in-out infinite;
+    /* animation: float 4s ease-in-out infinite; */ /* DESACTIVADO - logo estático */
     transition: all 0.3s ease;
+    /* Asegurar que el logo siempre sea visible */
+    position: relative;
+    z-index: 1000; /* z-index muy alto para estar siempre visible */
+    display: block; /* Asegurar que se muestre como bloque */
+    margin-left: auto;
+    margin-right: auto;
+    object-fit: contain; /* Mantener proporción sin deformar */
 }
 
 .main-logo:hover {
@@ -132,24 +198,45 @@ body::after {
 }
 
 .main-title {
-    font-size: 4rem;
+    font-size: 3.5rem; /* Reducido de 4rem */
     font-weight: 900;
     letter-spacing: 4px;
-    margin-bottom: 15px;
+    margin-bottom: 10px; /* Reducido de 15px */
     line-height: 1.1;
 }
 
 .main-title .year {
     display: block;
     color: var(--accent-orange);
-    font-size: 5rem;
+    font-size: 4.5rem; /* Reducido de 5rem */
     text-shadow: 
         0 0 10px var(--glow-orange),
         0 0 20px var(--glow-orange),
         0 0 40px var(--glow-orange);
     font-weight: 900;
     letter-spacing: 8px;
+    position: relative;
 }
+
+/* Efecto chromatic aberration retro - DESACTIVADO
+.main-title .year::before {
+    content: '2025';
+    position: absolute;
+    left: -2px;
+    top: 0;
+    color: rgba(0, 255, 255, 0.3);
+    z-index: -1;
+}
+
+.main-title .year::after {
+    content: '2025';
+    position: absolute;
+    left: 2px;
+    top: 0;
+    color: rgba(255, 0, 255, 0.3);
+    z-index: -1;
+}
+*/
 
 .main-title .awards {
     display: block;
@@ -173,7 +260,7 @@ body::after {
     background: rgba(26, 26, 26, 0.8);
     border: 2px solid var(--dark-gray);
     border-radius: 20px;
-    padding: 50px 40px;
+    padding: 35px 30px; /* Reducido de 50px 40px */
     backdrop-filter: blur(20px);
     box-shadow: 
         0 8px 32px rgba(0, 0, 0, 0.4),
@@ -199,7 +286,7 @@ body::after {
 }
 
 .form-group {
-    margin-bottom: 30px;
+    margin-bottom: 22px; /* Reducido de 30px */
     text-align: left;
 }
 
@@ -215,12 +302,12 @@ body::after {
 
 .form-group input {
     width: 100%;
-    padding: 18px 20px;
+    padding: 15px 18px; /* Reducido de 18px 20px */
     background: rgba(10, 10, 10, 0.9);
     border: 2px solid var(--dark-gray);
     border-radius: 12px;
     color: var(--text-white);
-    font-size: 1.05rem;
+    font-size: 1rem; /* Reducido de 1.05rem */
     transition: all 0.3s ease;
     font-weight: 400;
 }
@@ -242,12 +329,12 @@ body::after {
 
 .submit-btn {
     width: 100%;
-    padding: 20px;
+    padding: 16px; /* Reducido de 20px */
     background: linear-gradient(135deg, var(--accent-orange) 0%, var(--deep-orange) 100%);
     border: none;
     border-radius: 12px;
     color: var(--text-white);
-    font-size: 1.1rem;
+    font-size: 1rem; /* Reducido de 1.1rem */
     font-weight: 900;
     letter-spacing: 3px;
     cursor: pointer;
@@ -257,7 +344,7 @@ body::after {
     gap: 12px;
     transition: all 0.3s ease;
     text-transform: uppercase;
-    margin-top: 35px;
+    margin-top: 25px; /* Reducido de 35px */
     position: relative;
     overflow: hidden;
     box-shadow: 
@@ -338,10 +425,11 @@ body::after {
 }
 
 .header-logo {
-    width: 60px;
-    height: 60px;
+    width: 70px; /* Aumentado ligeramente */
+    height: auto; /* Altura automática para mantener proporción */
     filter: drop-shadow(0 0 15px var(--glow-orange));
     transition: all 0.3s ease;
+    object-fit: contain; /* Mantener proporción sin deformar */
 }
 
 .header-logo:hover {
@@ -356,6 +444,35 @@ body::after {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+}
+
+.header-right {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.view-all-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    background: rgba(26, 26, 26, 0.8);
+    border: 2px solid var(--accent-orange);
+    border-radius: 10px;
+    color: var(--accent-orange);
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.view-all-btn:hover {
+    background: var(--accent-orange);
+    color: var(--primary-black);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
 }
 
 .exit-btn {
@@ -813,6 +930,167 @@ body::after {
 }
 
 /* ============================================
+   ALL CATEGORIES MODAL
+   ============================================ */
+
+.modal-large {
+    max-width: 90vw;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 40px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--dark-gray);
+}
+
+.modal-header h2 {
+    margin: 0;
+}
+
+.close-modal-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-gray);
+    font-size: 2rem;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.close-modal-btn:hover {
+    background: var(--dark-gray);
+    color: var(--accent-orange);
+    transform: rotate(90deg);
+}
+
+.all-categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.category-card {
+    background: rgba(26, 26, 26, 0.6);
+    border: 2px solid var(--dark-gray);
+    border-radius: 12px;
+    padding: 20px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.category-card:hover {
+    border-color: var(--accent-orange);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(255, 107, 53, 0.3);
+}
+
+.category-card.voted {
+    border-color: var(--accent-orange);
+    background: rgba(255, 107, 53, 0.1);
+}
+
+.category-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: var(--accent-orange);
+}
+
+.category-card p {
+    font-size: 0.9rem;
+    color: var(--text-gray);
+    margin-bottom: 10px;
+}
+
+.category-card .voted-option {
+    font-size: 0.95rem;
+    color: var(--text-white);
+    font-weight: 700;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--dark-gray);
+}
+
+/* ============================================
+   VOTE OPTION WITH IMAGE PLACEHOLDER
+   ============================================ */
+
+.vote-option {
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(10, 10, 10, 0.9) 100%);
+    border: 2px solid var(--dark-gray);
+    border-radius: 16px;
+    padding: 0;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.option-image-container {
+    width: 100%;
+    background: rgba(42, 42, 42, 0.5);
+    border-bottom: 2px solid var(--dark-gray);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Imagen vertical para personas */
+.option-image-container.vertical {
+    aspect-ratio: 3 / 4;
+    max-height: 350px; /* Aumentado de 250px a 350px */
+}
+
+/* Imagen horizontal para otras categorías */
+.option-image-container.horizontal {
+    aspect-ratio: 16 / 9;
+    max-height: 250px; /* Aumentado de 180px a 250px */
+}
+
+.option-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+.option-image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(42, 42, 42, 0.8) 0%, rgba(26, 26, 26, 0.9) 100%);
+    color: var(--text-gray);
+    font-size: 3rem;
+    opacity: 0.3;
+}
+
+.vote-option:hover .option-image {
+    transform: scale(1.05);
+}
+
+.option-content {
+    padding: 25px 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* ============================================
    RESPONSIVE DESIGN
    ============================================ */
 
@@ -831,8 +1109,8 @@ body::after {
     }
 
     .main-logo {
-        width: 140px;
-        height: 140px;
+        width: 170px; /* Aumentado proporcionalmente */
+        height: auto; /* Mantener proporción */
     }
 
     .category-title {
@@ -844,6 +1122,18 @@ body::after {
         padding: 20px 25px;
         flex-direction: column;
         gap: 20px;
+    }
+
+    .header-right {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .view-all-btn,
+    .exit-btn {
+        width: 100%;
+        justify-content: center;
     }
 
     .header-title {
@@ -876,6 +1166,15 @@ body::after {
         margin: 20px;
     }
 
+    .modal-large {
+        padding: 30px 20px;
+        max-width: 95vw;
+    }
+
+    .all-categories-grid {
+        grid-template-columns: 1fr;
+    }
+
     .modal-content h2 {
         font-size: 2.2rem;
     }
@@ -891,7 +1190,11 @@ body::after {
     }
 
     .vote-option {
-        padding: 35px 20px;
+        padding: 0;
+    }
+
+    .option-content {
+        padding: 20px 15px;
     }
 }
 
@@ -1007,4 +1310,46 @@ button:focus {
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
     }
+}
+
+/* ============================================
+   RETRO 80s EFFECTS
+   ============================================ */
+
+/* Efecto de escaneo CRT opcional para el login */
+.login-page .retro-scanlines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.15) 0px,
+        rgba(0, 0, 0, 0.15) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.3;
+}
+
+/* Efecto de luz neón en el logo */
+.main-logo {
+    filter: 
+        drop-shadow(0 0 30px var(--glow-orange))
+        drop-shadow(0 0 60px rgba(255, 107, 53, 0.5))
+        contrast(1.2)
+        brightness(1.1);
+}
+
+/* Efecto de texto neón en el título */
+.main-title .year {
+    text-shadow: 
+        0 0 10px var(--glow-orange),
+        0 0 20px var(--glow-orange),
+        0 0 40px var(--glow-orange),
+        0 0 80px rgba(255, 107, 53, 0.5),
+        0 0 120px rgba(255, 107, 53, 0.3);
 }

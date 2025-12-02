@@ -2,13 +2,39 @@
 
 Página web de votaciones para los premios anuales del grupo GOR2 - Nochevieja 2025
 
+## 🚀 Deploy Rápido
+
+```bash
+# 1. Sube a GitHub
+git add .
+git commit -m "Ready for production"
+git push origin main
+
+# 2. Deploy en Netlify
+# - Conéctate a netlify.com
+# - Import from GitHub
+# - Deploy!
+
+# 3. Ver votos
+# Dashboard de Netlify → Forms → gor2-votes
+```
+
+📚 **Guías completas:**
+- [DEPLOYMENT-GUIDE.md](./DEPLOYMENT-GUIDE.md) - Cómo desplegar
+- [VOTING-SYSTEM.md](./VOTING-SYSTEM.md) - Cómo funciona el guardado
+
+---
+
 ## 🎮 Características
 
 - **Diseño moderno con temática GOR2**: Colores naranja y negro del logo con efectos visuales impactantes
 - **Sistema de login elegante**: Control de acceso con animaciones fluidas
 - **21 Categorías**: Votación completa para todas las categorías del grupo
 - **Navegación cinematográfica**: Sistema de transiciones suaves entre categorías
-- **Guardado automático**: Los votos se guardan en localStorage
+- **💾 Guardado automático con Netlify Forms**: Los votos se guardan en el servidor (GRATIS)
+- **📊 Panel de administración**: Ver y exportar todos los votos
+- **🖼️ Sistema de imágenes**: Placeholders para fotos de nominados
+- **👁️ Vista de todas las categorías**: Modal para ver progreso completo
 - **Animaciones avanzadas**: Efectos de hover, transiciones y partículas flotantes
 - **Responsive**: Perfectamente adaptado para móviles, tablets y desktop
 - **Accesibilidad**: Soporte para usuarios con preferencias de movimiento reducido
@@ -24,12 +50,16 @@ Página web de votaciones para los premios anuales del grupo GOR2 - Nochevieja 2
 - **Naranja Profundo**: `#ff4500` - Gradientes
 
 ### Efectos Visuales
+- **Fondo retro ochentero**: Imagen de graffiti/neón optimizada (0.30MB)
 - Gradientes dinámicos con efecto glow
 - Animaciones de entrada y salida suaves
 - Efectos hover con transformaciones 3D
+- **Scanlines CRT**: Efecto de pantalla antigua opcional
+- **Chromatic aberration**: Glitch retro en títulos
 - Partículas flotantes en el fondo
 - Transiciones con curvas de Bézier personalizadas
 - Scroll suave entre secciones
+- Efecto neón en logo y textos
 
 ## 📋 Categorías
 
@@ -105,6 +135,31 @@ gor2-awards-page/
 - **Accent Orange**: `#ff8c42`
 
 ## 🔧 Personalización
+
+### Optimizar nuevas imágenes
+
+Usa el script incluido para optimizar imágenes:
+
+```bash
+python3 optimize_images.py assets/tu-imagen.png 75
+```
+
+### Ajustar opacidad del fondo
+
+En `styles.css`, modifica:
+
+```css
+.login-page::before {
+    opacity: 0.15; /* Cambia entre 0.05 - 0.3 */
+}
+```
+
+### Desactivar efectos retro
+
+Comenta en `index.html`:
+```html
+<!-- <div class="retro-scanlines"></div> -->
+```
 
 ### Editar opciones de votación
 
