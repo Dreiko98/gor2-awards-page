@@ -7,6 +7,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // ⚙️ MODO DESARROLLO: Cambia esto a 'true' para skipear el countdown
     const DEV_MODE = false; // Cambia a 'false' antes de deployment
     
+    // 🔐 CONTRASEÑA ADMIN para bypass del countdown
+    const ADMIN_PASSWORD = 'Gor2#SaveOscar!';
+    
+    // Check if admin bypass is active
+    let adminBypass = sessionStorage.getItem('gor2_admin_bypass') === 'true';
+    
     // Set deadline: December 8, 2025 at 17:00 (5:00 PM)
     const deadline = new Date('2025-12-08T17:00:00').getTime();
     
@@ -15,8 +21,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const now = new Date().getTime();
         const timeLeft = deadline - now;
         
-        // Skip countdown if in DEV_MODE
-        if (DEV_MODE) {
+        // Skip countdown if in DEV_MODE or admin bypass
+        if (DEV_MODE || adminBypass) {
             if (countdownOverlay) {
                 countdownOverlay.classList.add('hidden');
             }
@@ -113,6 +119,69 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Add floating particles effect
     createParticles();
+    
+    // 🔧 Admin Access Handler
+    const adminAccessBtn = document.getElementById('adminAccessBtn');
+    const adminPasswordInput = document.getElementById('adminPassword');
+    const adminError = document.getElementById('adminError');
+    
+    if (adminAccessBtn && adminPasswordInput) {
+        // Handle Enter key in password input
+        adminPasswordInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                adminAccessBtn.click();
+            }
+        });
+        
+        adminAccessBtn.addEventListener('click', function() {
+            const enteredPassword = adminPasswordInput.value;
+            
+            if (enteredPassword === ADMIN_PASSWORD) {
+                // Set admin bypass flag
+                sessionStorage.setItem('gor2_admin_bypass', 'true');
+                adminBypass = true;
+                
+                // Hide countdown overlay
+                if (countdownOverlay) {
+                    countdownOverlay.style.transition = 'opacity 0.5s ease';
+                    countdownOverlay.style.opacity = '0';
+                    setTimeout(() => {
+                        countdownOverlay.classList.add('hidden');
+                        countdownOverlay.style.opacity = '1';
+                    }, 500);
+                }
+                
+                // Unlock login container
+                if (loginContainer) {
+                    loginContainer.classList.remove('locked');
+                }
+                
+                // Clear input
+                adminPasswordInput.value = '';
+                
+                // Show success message briefly
+                if (adminError) {
+                    adminError.textContent = '✅ Acceso admin concedido';
+                    adminError.style.color = '#4ade80';
+                    setTimeout(() => {
+                        adminError.textContent = '';
+                    }, 2000);
+                }
+            } else {
+                // Show error
+                if (adminError) {
+                    adminError.textContent = '❌ Contraseña incorrecta';
+                    adminPasswordInput.value = '';
+                    adminPasswordInput.focus();
+                    
+                    // Clear error after 3 seconds
+                    setTimeout(() => {
+                        adminError.textContent = '';
+                    }, 3000);
+                }
+            }
+        });
+    }
 });
 
 function createParticles() {

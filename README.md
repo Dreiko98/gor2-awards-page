@@ -31,6 +31,7 @@ git push origin main
 - **Sistema de login elegante**: Control de acceso con animaciones fluidas
 - **🔒 Protección con contraseña**: Sistema de validación para controlar el acceso
 - **⏱️ Countdown de apertura**: Bloqueo automático con cuenta atrás hasta la fecha límite (8 Dic 2025, 17:00h)
+- **🔧 Acceso de administrador**: Bypass discreto del countdown para testing en producción
 - **21 Categorías**: Votación completa para todas las categorías del grupo
 - **📋 Recap de votos**: Ventana de resumen antes de enviar con opción de editar
 - **Navegación cinematográfica**: Sistema de transiciones suaves entre categorías
@@ -205,7 +206,15 @@ Para desplegar la página web:
 2. **Netlify/Vercel**: Arrastra la carpeta del proyecto
 3. **Servidor local**: Abre `index.html` directamente en el navegador
 
-## 📝 Notas
+## � Documentación Adicional
+
+- **[ADMIN-ACCESS.md](./ADMIN-ACCESS.md)** - Acceso de administrador para testing en producción
+- **[DEV-MODE.md](./DEV-MODE.md)** - Modo desarrollo para testing local
+- **[PASSWORD-INFO.md](./PASSWORD-INFO.md)** - Información sobre contraseñas
+- **[DEPLOYMENT-GUIDE.md](./DEPLOYMENT-GUIDE.md)** - Guía completa de despliegue
+- **[TROUBLESHOOTING.md](./TROUBLESHOOTING.md)** - Solución de problemas comunes
+
+## �📝 Notas
 
 - Actualmente los votos se guardan solo en localStorage (navegador)
 - Para producción, se recomienda implementar un backend para almacenar los votos en una base de datos
