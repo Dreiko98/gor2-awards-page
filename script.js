@@ -4,6 +4,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const loginContainer = document.querySelector('.login-container');
     const countdownOverlay = document.getElementById('countdownOverlay');
     
+    // ⚙️ MODO DESARROLLO: Cambia esto a 'true' para skipear el countdown
+    const DEV_MODE = false; // Cambia a 'false' antes de deployment
+    
     // Set deadline: December 8, 2025 at 17:00 (5:00 PM)
     const deadline = new Date('2025-12-08T17:00:00').getTime();
     
@@ -11,6 +14,17 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateCountdown() {
         const now = new Date().getTime();
         const timeLeft = deadline - now;
+        
+        // Skip countdown if in DEV_MODE
+        if (DEV_MODE) {
+            if (countdownOverlay) {
+                countdownOverlay.classList.add('hidden');
+            }
+            if (loginContainer) {
+                loginContainer.classList.remove('locked');
+            }
+            return;
+        }
         
         if (timeLeft <= 0) {
             // Deadline reached - unlock voting

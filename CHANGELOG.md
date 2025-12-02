@@ -1,5 +1,36 @@
 # Changelog - GOR2 Awards 2025
 
+## Versión 2.7 - Responsive Countdown + Dev Mode (2 Diciembre 2025)
+
+### 📱 Mejoras de Responsividad
+- ✅ **Countdown 100% responsive** - Optimizado para todos los dispositivos
+- ✅ **4 breakpoints** - Desktop, Tablet (768px), Móvil (480px), Móvil pequeño (380px)
+- ✅ **Tamaños adaptativos** - Logo, textos y timer se ajustan automáticamente
+- ✅ **Sin scroll horizontal** - Diseño fluido en todos los tamaños
+- ✅ **Mensaje de bienvenida** - "Bienvenido a las votaciones de los Gor2 Awards 2025"
+- ✅ **Timer compacto en móvil** - De 100px → 55px en pantallas pequeñas
+- ✅ **Fuentes escalables** - De 3rem → 1.4rem en móviles pequeños
+- ✅ **Padding optimizado** - De 50px → 20px en móviles
+
+### 🔧 Modo Desarrollo
+- ✅ **DEV_MODE variable** - Skipear countdown durante desarrollo
+- ✅ **Toggle fácil** - `const DEV_MODE = true/false` en script.js
+- ✅ **Documentación** - Archivo DEV-MODE.md con instrucciones
+- ✅ **Recordatorios** - Comentarios para cambiar a false antes de deployment
+
+### 🎨 Mejoras de Diseño
+- Mensaje de bienvenida agregado al countdown
+- Box-sizing para evitar desbordamiento
+- Flex-wrap en timer para adaptabilidad
+- Width: 90% para mejor control responsive
+
+### 📚 Documentación
+- Creado RESPONSIVE-TEST.md con guía de pruebas
+- Creado DEV-MODE.md con instrucciones de desarrollo
+- Breakpoints y tamaños documentados
+
+---
+
 ## Versión 2.6 - Recap de Votos + Countdown de Apertura (2 Diciembre 2025)
 
 ### 🎯 Nueva Funcionalidad: Modal de Recap de Votos
