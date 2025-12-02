@@ -34,7 +34,7 @@ En la parte inferior del overlay del countdown, verás:
 Haz clic para expandir la sección de acceso admin.
 
 ### Paso 3: Ingresar la Contraseña
-1. Escribe la contraseña: `GorAdmin2025!`
+1. Escribe la contraseña: `GorAdmin2025`
 2. Haz clic en el botón **"Acceder"** o presiona **Enter**
 
 ### Paso 4: Acceso Concedido
