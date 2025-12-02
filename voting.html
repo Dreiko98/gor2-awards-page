@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOR2 AWARDS 2025 - Votación</title>
+    <link rel="icon" type="image/x-icon" href="assets/logo_gor2.ico">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="voting-page">
+    <!-- Header Navigation -->
+    <header class="voting-header">
+        <div class="header-left">
+            <img src="assets/logo_gor2.png" alt="GOR2 Logo" class="header-logo">
+            <span class="header-title">GOR2 AWARDS</span>
+        </div>
+        <div class="header-right">
+            <button id="exitVoting" class="exit-btn">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 4L4 12M4 4L12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                EXIT VOTING
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Voting Container -->
+    <div class="voting-container">
+        <!-- Category Navigation -->
+        <div class="category-nav">
+            <button id="prevCategory" class="nav-btn nav-prev">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                PREVIOUS
+            </button>
+            <button id="nextCategory" class="nav-btn nav-next">
+                NEXT
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Category Title -->
+        <div class="category-header">
+            <h1 id="categoryTitle" class="category-title"></h1>
+            <p id="categoryDescription" class="category-description"></p>
+        </div>
+
+        <!-- Voting Options Grid -->
+        <div id="votingGrid" class="voting-grid">
+            <!-- Options will be dynamically loaded here -->
+        </div>
+
+        <!-- Vote Counter -->
+        <div class="vote-counter">
+            <span>VOTOS: <span id="voteCount">0</span> / 21</span>
+        </div>
+
+        <!-- Submit Button (shown on last category) -->
+        <div id="submitSection" class="submit-section" style="display: none;">
+            <button id="submitVotes" class="submit-all-btn">
+                ENVIAR TODOS LOS VOTOS
+            </button>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmModal" class="modal">
+        <div class="modal-content">
+            <h2>¡Votos Enviados!</h2>
+            <p>Tus votos han sido registrados correctamente.</p>
+            <p class="voter-name">Gracias por participar, <span id="voterName"></span>!</p>
+            <button id="closeModal" class="modal-btn">CERRAR</button>
+        </div>
+    </div>
+
+    <script src="voting.js"></script>
+</body>
+</html>
