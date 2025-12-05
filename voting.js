@@ -2,37 +2,17 @@
 const categories = [
     {
         id: 1,
-        title: "GOR2 MÁS GRACIOSO",
+        title: "GOR MÁS GRACIOSO",
         description: "El que más nos ha hecho reír este año",
         options: ["Germán", "Gajas", "Enzo", "Delgado", "Carlos", "Colomino", "Gastón", "Oscar"],
-        imageType: "vertical", // personas
-        images: {
-            "Germán": "assets/nominees/german/german.jpg",
-            "Gajas": "assets/nominees/gajas/gajas.jpg",
-            "Enzo": "assets/nominees/enzo/enzo.jpg",
-            "Delgado": "assets/nominees/delgado/delgado.jpg",
-            "Carlos": "assets/nominees/carlos/carlos.jpg",
-            "Colomino": "assets/nominees/colomino/colomino.jpg",
-            "Gastón": "assets/nominees/gaston/gaston.jpg",
-            "Oscar": "assets/nominees/oscar/oscar.jpg"
-        }
+        imageType: "vertical" // personas
     },
     {
         id: 2,
         title: "GOR2 MÁS AUSENTE",
         description: "El que más ha brillado por su ausencia",
         options: ["Germán", "Gajas", "Enzo", "Delgado", "Carlos", "Colomino", "Gastón", "Oscar"],
-        imageType: "vertical",
-        images: {
-            "Germán": "assets/nominees/german/german.jpg",
-            "Gajas": "assets/nominees/gajas/gajas.jpg",
-            "Enzo": "assets/nominees/enzo/enzo.jpg",
-            "Delgado": "assets/nominees/delgado/delgado.jpg",
-            "Carlos": "assets/nominees/carlos/carlos.jpg",
-            "Colomino": "assets/nominees/colomino/colomino.jpg",
-            "Gastón": "assets/nominees/gaston/gaston.jpg",
-            "Oscar": "assets/nominees/oscar/oscar.jpg"
-        }
+        imageType: "vertical"
     },
     {
         id: 3,
@@ -53,34 +33,14 @@ const categories = [
         title: "GOR2 CON MEJORES STICKERS",
         description: "Los stickers más legendarios",
         options: ["Germán", "Gajas", "Enzo", "Delgado", "Carlos", "Colomino", "Gastón", "Oscar"],
-        imageType: "vertical",
-        images: {
-            "Germán": "assets/nominees/german/german.jpg",
-            "Gajas": "assets/nominees/gajas/gajas.jpg",
-            "Enzo": "assets/nominees/enzo/enzo.jpg",
-            "Delgado": "assets/nominees/delgado/delgado.jpg",
-            "Carlos": "assets/nominees/carlos/carlos.jpg",
-            "Colomino": "assets/nominees/colomino/colomino.jpg",
-            "Gastón": "assets/nominees/gaston/gaston.jpg",
-            "Oscar": "assets/nominees/oscar/oscar.jpg"
-        }
+        imageType: "vertical"
     },
     {
         id: 6,
         title: "BORRACHO DEL AÑO",
         description: "El que mejor ha celebrado este 2025",
         options: ["Germán", "Gajas", "Enzo", "Delgado", "Carlos", "Colomino", "Gastón", "Oscar"],
-        imageType: "vertical",
-        images: {
-            "Germán": "assets/nominees/german/german.jpg",
-            "Gajas": "assets/nominees/gajas/gajas.jpg",
-            "Enzo": "assets/nominees/enzo/enzo.jpg",
-            "Delgado": "assets/nominees/delgado/delgado.jpg",
-            "Carlos": "assets/nominees/carlos/carlos.jpg",
-            "Colomino": "assets/nominees/colomino/colomino.jpg",
-            "Gastón": "assets/nominees/gaston/gaston.jpg",
-            "Oscar": "assets/nominees/oscar/oscar.jpg"
-        }
+        imageType: "vertical"
     },
     {
         id: 7,
@@ -94,34 +54,14 @@ const categories = [
         title: "MEJOR DESARROLLO DE PERSONAJE 2025",
         description: "El que más ha evolucionado este año",
         options: ["Germán", "Gajas", "Enzo", "Delgado", "Carlos", "Colomino", "Gastón", "Oscar"],
-        imageType: "vertical",
-        images: {
-            "Germán": "assets/nominees/german/german.jpg",
-            "Gajas": "assets/nominees/gajas/gajas.jpg",
-            "Enzo": "assets/nominees/enzo/enzo.jpg",
-            "Delgado": "assets/nominees/delgado/delgado.jpg",
-            "Carlos": "assets/nominees/carlos/carlos.jpg",
-            "Colomino": "assets/nominees/colomino/colomino.jpg",
-            "Gastón": "assets/nominees/gaston/gaston.jpg",
-            "Oscar": "assets/nominees/oscar/oscar.jpg"
-        }
+        imageType: "vertical"
     },
     {
         id: 9,
         title: "GOR2 HATER",
         description: "El rey del hate",
         options: ["Germán", "Gajas", "Enzo", "Delgado", "Carlos", "Colomino", "Gastón", "Oscar"],
-        imageType: "vertical",
-        images: {
-            "Germán": "assets/nominees/german/german.jpg",
-            "Gajas": "assets/nominees/gajas/gajas.jpg",
-            "Enzo": "assets/nominees/enzo/enzo.jpg",
-            "Delgado": "assets/nominees/delgado/delgado.jpg",
-            "Carlos": "assets/nominees/carlos/carlos.jpg",
-            "Colomino": "assets/nominees/colomino/colomino.jpg",
-            "Gastón": "assets/nominees/gaston/gaston.jpg",
-            "Oscar": "assets/nominees/oscar/oscar.jpg"
-        }
+        imageType: "vertical"
     },
     {
         id: 10,
@@ -184,34 +124,14 @@ const categories = [
         title: "GOR2 CON MÁS FOMO",
         description: "El que más miedo tiene de perderse algo",
         options: ["Germán", "Gajas", "Enzo", "Delgado", "Carlos", "Colomino", "Gastón", "Oscar"],
-        imageType: "vertical",
-        images: {
-            "Germán": "assets/nominees/german/german.jpg",
-            "Gajas": "assets/nominees/gajas/gajas.jpg",
-            "Enzo": "assets/nominees/enzo/enzo.jpg",
-            "Delgado": "assets/nominees/delgado/delgado.jpg",
-            "Carlos": "assets/nominees/carlos/carlos.jpg",
-            "Colomino": "assets/nominees/colomino/colomino.jpg",
-            "Gastón": "assets/nominees/gaston/gaston.jpg",
-            "Oscar": "assets/nominees/oscar/oscar.jpg"
-        }
+        imageType: "vertical"
     },
     {
         id: 19,
         title: "MEJOR REGALO AMIGO INVISIBLE DEL AÑO PASADO",
         description: "El regalo más memorable",
         options: ["Germán", "Gajas", "Enzo", "Delgado", "Carlos", "Colomino", "Gastón", "Oscar"],
-        imageType: "vertical",
-        images: {
-            "Germán": "assets/nominees/german/german.jpg",
-            "Gajas": "assets/nominees/gajas/gajas.jpg",
-            "Enzo": "assets/nominees/enzo/enzo.jpg",
-            "Delgado": "assets/nominees/delgado/delgado.jpg",
-            "Carlos": "assets/nominees/carlos/carlos.jpg",
-            "Colomino": "assets/nominees/colomino/colomino.jpg",
-            "Gastón": "assets/nominees/gaston/gaston.jpg",
-            "Oscar": "assets/nominees/oscar/oscar.jpg"
-        }
+        imageType: "vertical"
     },
     {
         id: 20,
@@ -319,19 +239,12 @@ function displayCategory(index) {
                 optionDiv.classList.add('selected');
             }
             
-            // Obtener la ruta de la imagen
-            let imagePath;
-            if (category.images && category.images[option]) {
-                // Si hay un objeto images con la imagen específica
-                imagePath = category.images[option];
-            } else {
-                // Fallback: crear slug para la imagen (ej: "german" de "Germán")
-                const imageSlug = option.toLowerCase()
-                    .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // Quitar acentos
-                    .replace(/\s+/g, '-'); // Reemplazar espacios por guiones
-                
-                imagePath = `assets/nominees/${category.id}/${imageSlug}.jpg`;
-            }
+            // Crear slug para la imagen (ej: "german" de "Germán")
+            const imageSlug = option.toLowerCase()
+                .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // Quitar acentos
+                .replace(/\s+/g, '-'); // Reemplazar espacios por guiones
+            
+            const imagePath = `assets/nominees/${category.id}/${imageSlug}.jpg`;
             
             optionDiv.innerHTML = `
                 <div class="option-image-container ${category.imageType}">
