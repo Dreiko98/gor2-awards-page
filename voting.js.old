@@ -2,192 +2,87 @@
 const categories = [
     {
         id: 1,
-        title: "GOR2 MÁS GRACIOSO",
+        title: "GOR MÁS GRACIOSO",
         description: "El que más nos ha hecho reír este año",
         options: ["Germán", "Gajas", "Enzo", "Delgado", "Carlos", "Colomino", "Gastón", "Oscar"],
-        imageType: "vertical", // personas
-        images: {
-            "Germán": "assets/nominees/german/german.jpg",
-            "Gajas": "assets/nominees/gajas/gajas.jpg",
-            "Enzo": "assets/nominees/enzo/enzo.jpg",
-            "Delgado": "assets/nominees/delgado/delgado.jpg",
-            "Carlos": "assets/nominees/carlos/carlos.jpg",
-            "Colomino": "assets/nominees/colomino/colomino.jpg",
-            "Gastón": "assets/nominees/gaston/gaston.jpg",
-            "Oscar": "assets/nominees/oscar/oscar.jpg"
-        }
+        imageType: "vertical" // personas
     },
     {
         id: 2,
         title: "GOR2 MÁS AUSENTE",
         description: "El que más ha brillado por su ausencia",
         options: ["Germán", "Gajas", "Enzo", "Delgado", "Carlos", "Colomino", "Gastón", "Oscar"],
-        imageType: "vertical",
-        images: {
-            "Germán": "assets/nominees/german/german.jpg",
-            "Gajas": "assets/nominees/gajas/gajas.jpg",
-            "Enzo": "assets/nominees/enzo/enzo.jpg",
-            "Delgado": "assets/nominees/delgado/delgado.jpg",
-            "Carlos": "assets/nominees/carlos/carlos.jpg",
-            "Colomino": "assets/nominees/colomino/colomino.jpg",
-            "Gastón": "assets/nominees/gaston/gaston.jpg",
-            "Oscar": "assets/nominees/oscar/oscar.jpg"
-        }
+        imageType: "vertical"
     },
     {
         id: 3,
         title: "MEJOR CLIP",
         description: "El clip más épico del año",
-        options: ["El gameplay mas random de fifa", "Vale bro, sabes algo de Python?", "Clip 3", "Clip 4"],
-        imageType: "youtube",
-        youtubeVideos: {
-            "El gameplay mas random de fifa": "yziDX9YOc-Y",
-            "Vale bro, sabes algo de Python?": "EomeOOkclfw"
-        },
-        images: {
-            "El gameplay mas random de fifa": "assets/mejor clip/video del fifa.jpg"
-        }
+        options: ["Clip 1", "Clip 2", "Clip 3", "Clip 4"],
+        imageType: "horizontal"
     },
     {
         id: 4,
         title: "MEJOR CLIP IRL",
         description: "El mejor momento capturado en la vida real",
-        options: ["Los pibes cantando Superestrella", "Germán y Gajas bailan y Gajas se pica", "Oscar y Gajas carreando al futbolín en Oviedo", "Salsa buffalo"],
-        imageType: "horizontal",
-        images: {
-            "Los pibes cantando Superestrella": "assets/clip irl/superestrella.jpeg",
-            "Germán y Gajas bailan y Gajas se pica": "assets/clip irl/gajas picao.jpeg",
-            "Oscar y Gajas carreando al futbolín en Oviedo": "assets/clip irl/futbolin.jpeg",
-            "Salsa buffalo": "assets/clip irl/salsa buffalo.jpeg"
-        }
+        options: ["Clip IRL 1", "Clip IRL 2", "Clip IRL 3", "Clip IRL 4"],
+        imageType: "horizontal"
     },
     {
         id: 5,
         title: "GOR2 CON MEJORES STICKERS",
         description: "Los stickers más legendarios",
         options: ["Germán", "Gajas", "Enzo", "Delgado", "Carlos", "Colomino", "Gastón", "Oscar"],
-        imageType: "vertical",
-        images: {
-            "Germán": "assets/nominees/german/german.jpg",
-            "Gajas": "assets/nominees/gajas/gajas.jpg",
-            "Enzo": "assets/nominees/enzo/enzo.jpg",
-            "Delgado": "assets/nominees/delgado/delgado.jpg",
-            "Carlos": "assets/nominees/carlos/carlos.jpg",
-            "Colomino": "assets/nominees/colomino/colomino.jpg",
-            "Gastón": "assets/nominees/gaston/gaston.jpg",
-            "Oscar": "assets/nominees/oscar/oscar.jpg"
-        }
+        imageType: "vertical"
     },
     {
         id: 6,
         title: "BORRACHO DEL AÑO",
         description: "El que mejor ha celebrado este 2025",
         options: ["Germán", "Gajas", "Enzo", "Delgado", "Carlos", "Colomino", "Gastón", "Oscar"],
-        imageType: "vertical",
-        images: {
-            "Germán": "assets/nominees/german/german.jpg",
-            "Gajas": "assets/nominees/gajas/gajas.jpg",
-            "Enzo": "assets/nominees/enzo/enzo.jpg",
-            "Delgado": "assets/nominees/delgado/delgado.jpg",
-            "Carlos": "assets/nominees/carlos/carlos.jpg",
-            "Colomino": "assets/nominees/colomino/colomino.jpg",
-            "Gastón": "assets/nominees/gaston/gaston.jpg",
-            "Oscar": "assets/nominees/oscar/oscar.jpg"
-        }
+        imageType: "vertical"
     },
     {
         id: 7,
         title: "GOR2 QUOTES",
         description: "La frase más memorable del año",
-        options: [
-            "\"Estoy seguro en un 70% de que acabo de tener una cita\" - Enzo",
-            "\"No es pajeable\" - Germán ... \"Pajeable es casi todo\" - Gajas",
-            "\"Va bro pon tetas que me tengo que ir\" - Gajas",
-            "\"No me gusta deber dinero a la gente\" - Gaston",
-            "\"Estoy lleno\" - Germán",
-            "\"¿Mafalda Cardenal esa es la del colegio?\" - Óscar",
-            "\"¿Los mayores se emborrachan?\" - Óscar"
-        ],
-        imageType: "quote"
+        options: ["Quote 1", "Quote 2", "Quote 3", "Quote 4"],
+        imageType: "horizontal"
     },
     {
         id: 8,
         title: "MEJOR DESARROLLO DE PERSONAJE 2025",
         description: "El que más ha evolucionado este año",
         options: ["Germán", "Gajas", "Enzo", "Delgado", "Carlos", "Colomino", "Gastón", "Oscar"],
-        imageType: "vertical",
-        images: {
-            "Germán": "assets/nominees/german/german.jpg",
-            "Gajas": "assets/nominees/gajas/gajas.jpg",
-            "Enzo": "assets/nominees/enzo/enzo.jpg",
-            "Delgado": "assets/nominees/delgado/delgado.jpg",
-            "Carlos": "assets/nominees/carlos/carlos.jpg",
-            "Colomino": "assets/nominees/colomino/colomino.jpg",
-            "Gastón": "assets/nominees/gaston/gaston.jpg",
-            "Oscar": "assets/nominees/oscar/oscar.jpg"
-        }
+        imageType: "vertical"
     },
     {
         id: 9,
         title: "GOR2 HATER",
         description: "El rey del hate",
         options: ["Germán", "Gajas", "Enzo", "Delgado", "Carlos", "Colomino", "Gastón", "Oscar"],
-        imageType: "vertical",
-        images: {
-            "Germán": "assets/nominees/german/german.jpg",
-            "Gajas": "assets/nominees/gajas/gajas.jpg",
-            "Enzo": "assets/nominees/enzo/enzo.jpg",
-            "Delgado": "assets/nominees/delgado/delgado.jpg",
-            "Carlos": "assets/nominees/carlos/carlos.jpg",
-            "Colomino": "assets/nominees/colomino/colomino.jpg",
-            "Gastón": "assets/nominees/gaston/gaston.jpg",
-            "Oscar": "assets/nominees/oscar/oscar.jpg"
-        }
+        imageType: "vertical"
     },
     {
         id: 10,
         title: "JUEGO DEL AÑO",
         description: "El juego que más nos ha entretenido",
-        options: ["Expedition 33", "REPO", "Silksong", "Rematch"],
-        imageType: "horizontal",
-        images: {
-            "Expedition 33": "assets/juegodelano/expedition33.jpg",
-            "REPO": "assets/juegodelano/repo.jpg",
-            "Silksong": "assets/juegodelano/silksong.avif",
-            "Rematch": "assets/juegodelano/rematch.jpg"
-        }
+        options: ["Juego 1", "Juego 2", "Juego 3", "Juego 4"],
+        imageType: "horizontal"
     },
     {
         id: 11,
-        title: "GOR2 MÁS EMPANAO",
-        description: "El más empanado del año",
-        options: ["Germán", "Gajas", "Enzo", "Delgado", "Carlos", "Colomino", "Gastón", "Oscar"],
-        imageType: "vertical",
-        images: {
-            "Germán": "assets/nominees/german/german.jpg",
-            "Gajas": "assets/nominees/gajas/gajas.jpg",
-            "Enzo": "assets/nominees/enzo/enzo.jpg",
-            "Delgado": "assets/nominees/delgado/delgado.jpg",
-            "Carlos": "assets/nominees/carlos/carlos.jpg",
-            "Colomino": "assets/nominees/colomino/colomino.jpg",
-            "Gastón": "assets/nominees/gaston/gaston.jpg",
-            "Oscar": "assets/nominees/oscar/oscar.jpg"
-        }
+        title: "MEJOR STYLE",
+        description: "El estilo más icónico",
+        options: ["German Style", "Delgado Style", "Huevito Style", "Oscar Style"],
+        imageType: "horizontal"
     },
     {
         id: 12,
         title: "TOP HUEVITO STYLE",
-        description: "Las mejores anécdotas del Huevito",
-        options: [
-            "Pillar dos toallitas para lavarse las manos en el Moflete y dejar a Carlos sin",
-            "Querer que carlos le lleve a la hamburguesería en coche y dejar a Pablo solo",
-            "Plantarse en casa de Enzo sin avisar para jugar el nuevo God of War",
-            "Decir que no quiere probar un juego nuevo porque se tiene que ir a dormir para estudiar y se tira jugando a brawlhalla 1 hora más",
-            "Cuando le toca hacer la primera compra del viaje entero automaticamente se ensordece y desaparece esperando que lo haga otro",
-            "Coger un plan, copiarlo con su otro grupo de amigos y no ir al plan original",
-            "No subirse en un coche de 5 personas por ir en un coche de 4 personas aunque logísticamente fuera más cómodo lo otro"
-        ],
-        imageType: "anecdote"
+        description: "El mejor look del Huevito",
+        options: ["Style 1", "Style 2", "Style 3"],
+        imageType: "horizontal"
     },
     {
         id: 13,
@@ -198,90 +93,59 @@ const categories = [
     },
     {
         id: 14,
-        title: "MEJOR FIESTA",
-        description: "La noche más épica del año",
-        options: ["Salsa buffalo", "Committee", "Most + Rumbo", "Fiesta en Oviedo con viki"],
-        imageType: "horizontal",
-        images: {
-            "Salsa buffalo": "assets/fiesta/salsabuffalo.JPG",
-            "Committee": "assets/fiesta/committee.JPG",
-            "Most + Rumbo": "assets/fiesta/rumbomost.jpg",
-            "Fiesta en Oviedo con viki": "assets/fiesta/fiestaOviedo.jpg"
-        }
+        title: "MEJOR PERSONAJE SECUNDARIO",
+        description: "Los que también son protagonistas",
+        options: ["Rocío", "Irene", "Gise", "Angela"],
+        imageType: "vertical"
     },
     {
         id: 15,
-        title: "CASA DEL AÑO",
-        description: "El mejor lugar de reunión",
-        options: ["Casa Gastón", "Casa Germán", "Casa Carlos", "Abuela de Oscar"],
-        imageType: "horizontal",
-        images: {
-            "Casa Gastón": "assets/casa/casagaston.jpeg",
-            "Casa Germán": "assets/casa/casagerman.jpeg",
-            "Casa Carlos": "assets/casa/casacarlos.jpeg",
-            "Abuela de Oscar": "assets/casa/casaabuelaoscar.jpeg"
-        }
+        title: "MEJOR ANÉCDOTA",
+        description: "La historia que nunca olvidaremos",
+        options: ["Anécdota 1", "Anécdota 2", "Anécdota 3", "Anécdota 4"],
+        imageType: "horizontal"
     },
     {
         id: 16,
-        title: "GOR2 CON MÁS FOMO",
-        description: "El que más miedo tiene de perderse algo",
-        options: ["Germán", "Gajas", "Enzo", "Delgado", "Carlos", "Colomino", "Gastón", "Oscar"],
-        imageType: "vertical",
-        images: {
-            "Germán": "assets/nominees/german/german.jpg",
-            "Gajas": "assets/nominees/gajas/gajas.jpg",
-            "Enzo": "assets/nominees/enzo/enzo.jpg",
-            "Delgado": "assets/nominees/delgado/delgado.jpg",
-            "Carlos": "assets/nominees/carlos/carlos.jpg",
-            "Colomino": "assets/nominees/colomino/colomino.jpg",
-            "Gastón": "assets/nominees/gaston/gaston.jpg",
-            "Oscar": "assets/nominees/oscar/oscar.jpg"
-        }
+        title: "MEJOR FIESTA",
+        description: "La noche más épica del año",
+        options: ["Fiesta 1", "Fiesta 2", "Fiesta 3", "Fiesta 4"],
+        imageType: "horizontal"
     },
     {
         id: 17,
-        title: "MEJOR REGALO AMIGO INVISIBLE DEL AÑO PASADO",
-        description: "El regalo más memorable",
-        options: ["Germán", "Gajas", "Enzo", "Delgado", "Carlos", "Colomino", "Gastón", "Oscar"],
-        imageType: "vertical",
-        images: {
-            "Germán": "assets/nominees/german/german.jpg",
-            "Gajas": "assets/nominees/gajas/gajas.jpg",
-            "Enzo": "assets/nominees/enzo/enzo.jpg",
-            "Delgado": "assets/nominees/delgado/delgado.jpg",
-            "Carlos": "assets/nominees/carlos/carlos.jpg",
-            "Colomino": "assets/nominees/colomino/colomino.jpg",
-            "Gastón": "assets/nominees/gaston/gaston.jpg",
-            "Oscar": "assets/nominees/oscar/oscar.jpg"
-        }
+        title: "CASA DEL AÑO",
+        description: "El mejor lugar de reunión",
+        options: ["Casa Gastón", "Casa Germán", "Casa Carlos", "Abuela de Oscar"],
+        imageType: "horizontal"
     },
     {
         id: 18,
-        title: "MEJOR DUPLA GAMING DEL AÑO",
-        description: "El mejor equipo de gaming",
-        options: ["Gajas y Germán", "Delgado y Gaston", "Gaston y Enzo"],
-        imageType: "dupla",
-        images: {
-            "Gajas y Germán": ["assets/nominees/gajas/gajas.jpg", "assets/nominees/german/german.jpg"],
-            "Delgado y Gaston": ["assets/nominees/delgado/delgado.jpg", "assets/nominees/gaston/gaston.jpg"],
-            "Gaston y Enzo": ["assets/nominees/gaston/gaston.jpg", "assets/nominees/enzo/enzo.jpg"]
-        }
+        title: "GOR2 CON MÁS FOMO",
+        description: "El que más miedo tiene de perderse algo",
+        options: ["Germán", "Gajas", "Enzo", "Delgado", "Carlos", "Colomino", "Gastón", "Oscar"],
+        imageType: "vertical"
     },
     {
         id: 19,
+        title: "MEJOR REGALO AMIGO INVISIBLE DEL AÑO PASADO",
+        description: "El regalo más memorable",
+        options: ["Germán", "Gajas", "Enzo", "Delgado", "Carlos", "Colomino", "Gastón", "Oscar"],
+        imageType: "vertical"
+    },
+    {
+        id: 20,
+        title: "MEJOR DUPLA GAMING DEL AÑO",
+        description: "El mejor equipo de gaming",
+        options: ["Dupla 1", "Dupla 2", "Dupla 3", "Dupla 4"],
+        imageType: "horizontal"
+    },
+    {
+        id: 21,
         title: "MEJOR VLOG",
         description: "El vlog más épico",
-        options: ["Fuente de Rubielos 2", "Oviedo (TBD)", "Roma"],
-        imageType: "youtube",
-        youtubeVideos: {
-            "Fuente de Rubielos 2": "vfoxp7lo5Q4",
-            "Roma": "Ff3DspkjDeI"
-        },
-        images: {
-            "Fuente de Rubielos 2": "assets/vlog/rubielos.jpg",
-            "Roma": "assets/vlog/roma.jpg"
-        }
+        options: ["Vlog 1", "Vlog 2", "Vlog 3", "Vlog 4"],
+        imageType: "horizontal"
     }
 ];
 
@@ -380,82 +244,20 @@ function displayCategory(index) {
                 .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // Quitar acentos
                 .replace(/\s+/g, '-'); // Reemplazar espacios por guiones
             
-            let imagePath = '';
-            if (category.images && category.images[option]) {
-                imagePath = category.images[option];
-            } else {
-                imagePath = `assets/nominees/${category.id}/${imageSlug}.jpg`;
-            }
+            const imagePath = `assets/nominees/${category.id}/${imageSlug}.jpg`;
             
-            // Manejo especial para quotes y anecdotes
-            if (category.imageType === 'quote') {
-                optionDiv.innerHTML = `
-                    <div class="quote-content">
-                        <div class="quote-icon">💬</div>
-                        <div class="quote-text">${option}</div>
+            optionDiv.innerHTML = `
+                <div class="option-image-container ${category.imageType}">
+                    <img src="${imagePath}" alt="${option}" class="option-image" 
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="option-image-placeholder" style="display:none;">
+                        ${category.imageType === 'vertical' ? '👤' : '🎮'}
                     </div>
-                `;
-            } else if (category.imageType === 'anecdote') {
-                optionDiv.innerHTML = `
-                    <div class="quote-content">
-                        <div class="quote-icon">📖</div>
-                        <div class="quote-text">${option}</div>
-                    </div>
-                `;
-            } else if (category.imageType === 'youtube') {
-                // Para videos de YouTube, mostrar miniatura y botón
-                const videoId = category.youtubeVideos && category.youtubeVideos[option];
-                const thumbnailUrl = videoId 
-                    ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`
-                    : (imagePath || `assets/nominees/${category.id}/${imageSlug}.jpg`);
-                
-                optionDiv.innerHTML = `
-                    <div class="option-image-container horizontal">
-                        <img src="${thumbnailUrl}" alt="${option}" class="option-image" 
-                             onerror="this.src='https://img.youtube.com/vi/${videoId}/hqdefault.jpg';">
-                    </div>
-                    <div class="option-content">
-                        <div class="option-title">${option}</div>
-                        ${videoId ? `
-                            <a href="https://youtu.be/${videoId}" target="_blank" class="youtube-button" onclick="event.stopPropagation();">
-                                <span class="youtube-icon">▶</span> Ver en YouTube
-                            </a>
-                        ` : '<span class="tbd-label">TBD</span>'}
-                    </div>
-                `;
-            } else if (category.imageType === 'dupla') {
-                // Para duplas, mostrar dos imágenes lado a lado
-                const images = category.images[option];
-                optionDiv.innerHTML = `
-                    <div class="dupla-images">
-                        <div class="dupla-image-container">
-                            <img src="${images[0]}" alt="${option.split(' y ')[0]}" class="dupla-image" 
-                                 onerror="this.style.display='none';">
-                        </div>
-                        <div class="dupla-vs">VS</div>
-                        <div class="dupla-image-container">
-                            <img src="${images[1]}" alt="${option.split(' y ')[1]}" class="dupla-image" 
-                                 onerror="this.style.display='none';">
-                        </div>
-                    </div>
-                    <div class="option-content">
-                        <div class="option-title">${option}</div>
-                    </div>
-                `;
-            } else {
-                optionDiv.innerHTML = `
-                    <div class="option-image-container ${category.imageType}">
-                        <img src="${imagePath}" alt="${option}" class="option-image" 
-                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <div class="option-image-placeholder" style="display:none;">
-                            ${category.imageType === 'vertical' ? '👤' : '🎮'}
-                        </div>
-                    </div>
-                    <div class="option-content">
-                        <div class="option-title">${option}</div>
-                    </div>
-                `;
-            }
+                </div>
+                <div class="option-content">
+                    <div class="option-title">${option}</div>
+                </div>
+            `;
             
             optionDiv.addEventListener('click', () => selectOption(category.id, option));
             

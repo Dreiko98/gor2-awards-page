@@ -1,5 +1,91 @@
 # Changelog - GOR2 Awards 2025
 
+## Versión 3.0 - Quotes & Anecdotes + Fix Scroll (5 Diciembre 2025)
+
+### 🆕 Nuevos Tipos de Categorías
+- ✅ **Tipo "quote"** - Diseño especial para frases memorables con icono 💬
+- ✅ **Tipo "anecdote"** - Diseño especial para anécdotas con icono 📖
+- ✅ **GOR2 QUOTES** - 7 frases épicas actualizadas con diseño quote
+- ✅ **TOP HUEVITO STYLE** - 7 anécdotas del Huevito con diseño anecdote
+
+### 📸 Nuevas Imágenes
+- ✅ **MEJOR CLIP** - 1 imagen añadida (video del fifa)
+- ✅ **MEJOR CLIP IRL** - 4 imágenes añadidas (superestrella, gajas picao, futbolín, salsa buffalo)
+- ✅ Total: 5 nuevas imágenes integradas
+
+### 🐛 Correcciones
+- ✅ **Fix: Scroll en modal de recap** - Ahora se puede scrollear dentro del resumen de votos
+- ✅ Overflow-y: auto en recap-grid funcionando correctamente
+- ✅ Max-height 90vh en recapModal para mejor UX
+
+### 🗑️ Categorías Eliminadas
+- ❌ **MEJOR PERSONAJE SECUNDARIO** - Categoría #14 eliminada
+- 🔄 Renumeradas categorías 15-20 → 14-19
+
+### 🎨 Mejoras de Diseño
+- Diseño especial para quotes: texto itálico, icono 💬, layout horizontal
+- Diseño especial para anecdotes: icono 📖, formato narrativo
+- Hover mejorado: iconos se escalan y rotan en quotes/anecdotes
+- Padding ajustado automáticamente según tipo de contenido
+
+### 📊 Cambios Estructurales
+- Total de categorías: **19** (reducido desde 20)
+- 2 categorías con tipos especiales nuevos
+- Sistema extensible para futuros tipos
+- Script Python (update_categories.py) para actualizaciones seguras
+
+---
+
+## Versión 2.9 - Imágenes de Nominados (5 Diciembre 2025)
+
+### 📸 Imágenes Añadidas
+- ✅ **JUEGO DEL AÑO** - 4/4 imágenes añadidas (expedition33, repo, silksong, rematch)
+- ✅ **MEJOR FIESTA** - 4/4 imágenes añadidas (salsabuffalo, committee, rumbomost, fiestaOviedo)
+- ✅ **MEJOR VLOG** - 2/3 imágenes añadidas (rubielos, roma) - Oviedo TBD
+
+### 🔄 Conversión de Archivos
+- ✅ Instalado libheif-examples para conversión HEIC
+- ✅ Convertidos 2 archivos HEIC a JPG (rumbomost, fiestaOviedo)
+- ✅ Soporte para formato AVIF (silksong.avif)
+
+### 📂 Estructura de Assets
+- Nueva carpeta: `assets/juegodelano/` con 4 imágenes
+- Nueva carpeta: `assets/fiesta/` con 4 imágenes JPG
+- Nueva carpeta: `assets/vlog/` con 2 imágenes
+- Total de imágenes de contenido: 10 archivos
+
+### 📝 Documentación
+- Creado HEIC-CONVERSION.md con guía de conversión
+- Creado IMAGES-ADDED.md con resumen completo
+- Instrucciones para verificación de imágenes
+
+---
+
+## Versión 2.8 - Actualización de Categorías (5 Diciembre 2025)
+
+### 🗑️ Categorías Eliminadas
+- ❌ **MEJOR STYLE** - Categoría #11 eliminada
+- ❌ **MEJOR ANÉCDOTA** - Categoría #15 eliminada
+
+### ➕ Nueva Categoría
+- ✅ **GOR2 MÁS EMPANAO** - Nueva categoría #11 con 8 nominados
+
+### ✏️ Categorías Actualizadas
+- ✅ **MEJOR CLIP** - Nominados actualizados con clips específicos
+- ✅ **MEJOR CLIP IRL** - 4 clips IRL definidos
+- ✅ **JUEGO DEL AÑO** - Expedition 33, REPO, Silksong, Rematch
+- ✅ **MEJOR FIESTA** - Salsa buffalo, Committee, Most + Rumbo, Oviedo
+- ✅ **MEJOR DUPLA GAMING** - Reducido a 3 duplas específicas
+- ✅ **MEJOR VLOG** - Fuente de Rubielos 2, Oviedo (TBD), Roma
+
+### 📊 Cambios Estructurales
+- Total de categorías: **20** (reducido desde 21)
+- Renumeración automática de IDs
+- Mantenimiento de imágenes de personas
+- Documentación actualizada en CATEGORIES-UPDATE.md
+
+---
+
 ## Versión 2.7 - Responsive Countdown + Dev Mode (2 Diciembre 2025)
 
 ### 📱 Mejoras de Responsividad
