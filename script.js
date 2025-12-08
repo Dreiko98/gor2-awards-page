@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let adminBypass = sessionStorage.getItem('gor2_admin_bypass') === 'true';
     
     // Set deadline: December 8, 2025 at 17:05 (5:05 PM)
-    const deadline = new Date('2025-12-08T17:05:00').getTime();
+    const deadline = new Date('2025-12-08T17:10:00').getTime();
     
     // Function to update countdown
     function updateCountdown() {
