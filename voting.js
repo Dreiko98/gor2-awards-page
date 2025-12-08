@@ -38,11 +38,13 @@ const categories = [
         id: 3,
         title: "MEJOR CLIP",
         description: "El clip más épico del año",
-        options: ["El gameplay mas random de fifa", "Vale bro, sabes algo de Python?", "Clip 3", "Clip 4"],
+        options: ["El gameplay mas random de fifa", "Vale bro, sabes algo de Python?", "Qué es Resela?", "A Óscar le cuesta meterla"],
         imageType: "youtube",
         youtubeVideos: {
             "El gameplay mas random de fifa": "yziDX9YOc-Y",
-            "Vale bro, sabes algo de Python?": "EomeOOkclfw"
+            "Vale bro, sabes algo de Python?": "EomeOOkclfw",
+            "Qué es Resela?": "af6SxDXYUEY",
+            "A Óscar le cuesta meterla": "rczHws-8mt8"
         },
         images: {
             "El gameplay mas random de fifa": "assets/mejor clip/video del fifa.jpg"
@@ -52,8 +54,14 @@ const categories = [
         id: 4,
         title: "MEJOR CLIP IRL",
         description: "El mejor momento capturado en la vida real",
-        options: ["Los pibes cantando Superestrella", "Germán y Gajas bailan y Gajas se pica", "Oscar y Gajas carreando al futbolín en Oviedo", "Salsa buffalo"],
-        imageType: "horizontal",
+        options: ["Los pibes cantando Superestrella", "Germán y Gajas bailan y Gajas se pica", "Oscar y Gajas carreando al futbolín en Oviedo", "Salsa buffalo", "DEP Búho"],
+        imageType: "youtube",
+        youtubeVideos: {
+            "Los pibes cantando Superestrella": "k6VGWcgqXs4",
+            "Germán y Gajas bailan y Gajas se pica": "8BQgEikwL2I",
+            "Salsa buffalo": "JhqK2PGUeQ8",
+            "DEP Búho": "X-Ilcg0rOzw"
+        },
         images: {
             "Los pibes cantando Superestrella": "assets/clip irl/superestrella.jpeg",
             "Germán y Gajas bailan y Gajas se pica": "assets/clip irl/gajas picao.jpeg",
@@ -106,7 +114,10 @@ const categories = [
             "\"No me gusta deber dinero a la gente\" - Gaston",
             "\"Estoy lleno\" - Germán",
             "\"¿Mafalda Cardenal esa es la del colegio?\" - Óscar",
-            "\"¿Los mayores se emborrachan?\" - Óscar"
+            "\"¿Los mayores se emborrachan?\" - Óscar",
+            "\"Siempre tengo a mano mi factura del god of war Ragnarok\" - Enzo",
+            "\"Estaba conduciendo y la vi toda panchi\" - Carlos",
+            "\"Perdón Oscar\" - Gastón"
         ],
         imageType: "quote"
     },
@@ -191,13 +202,6 @@ const categories = [
     },
     {
         id: 13,
-        title: "MEME DEL AÑO",
-        description: "El meme que más nos ha marcado",
-        options: ["Meme 1", "Meme 2", "Meme 3", "Meme 4"],
-        imageType: "horizontal"
-    },
-    {
-        id: 14,
         title: "MEJOR FIESTA",
         description: "La noche más épica del año",
         options: ["Salsa buffalo", "Committee", "Most + Rumbo", "Fiesta en Oviedo con viki"],
@@ -210,7 +214,7 @@ const categories = [
         }
     },
     {
-        id: 15,
+        id: 14,
         title: "CASA DEL AÑO",
         description: "El mejor lugar de reunión",
         options: ["Casa Gastón", "Casa Germán", "Casa Carlos", "Abuela de Oscar"],
@@ -223,7 +227,7 @@ const categories = [
         }
     },
     {
-        id: 16,
+        id: 15,
         title: "GOR2 CON MÁS FOMO",
         description: "El que más miedo tiene de perderse algo",
         options: ["Germán", "Gajas", "Enzo", "Delgado", "Carlos", "Colomino", "Gastón", "Oscar"],
@@ -240,7 +244,7 @@ const categories = [
         }
     },
     {
-        id: 17,
+        id: 16,
         title: "MEJOR REGALO AMIGO INVISIBLE DEL AÑO PASADO",
         description: "El regalo más memorable",
         options: ["Germán", "Gajas", "Enzo", "Delgado", "Carlos", "Colomino", "Gastón", "Oscar"],
@@ -257,7 +261,7 @@ const categories = [
         }
     },
     {
-        id: 18,
+        id: 17,
         title: "MEJOR DUPLA GAMING DEL AÑO",
         description: "El mejor equipo de gaming",
         options: ["Gajas y Germán", "Delgado y Gaston", "Gaston y Enzo"],
@@ -269,7 +273,7 @@ const categories = [
         }
     },
     {
-        id: 19,
+        id: 18,
         title: "MEJOR VLOG",
         description: "El vlog más épico",
         options: ["Fuente de Rubielos 2", "Oviedo (TBD)", "Roma"],
@@ -403,26 +407,57 @@ function displayCategory(index) {
                     </div>
                 `;
             } else if (category.imageType === 'youtube') {
-                // Para videos de YouTube, mostrar miniatura y botón
+                // Para videos de YouTube, crear la tarjeta SIN botón
                 const videoId = category.youtubeVideos && category.youtubeVideos[option];
-                const thumbnailUrl = videoId 
-                    ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`
-                    : (imagePath || `assets/nominees/${category.id}/${imageSlug}.jpg`);
                 
+                // Priorizar imagen local si está disponible, sino usar miniatura de YouTube
+                let thumbnailUrl;
+                if (imagePath) {
+                    // Si hay imagen local definida, usarla
+                    thumbnailUrl = imagePath;
+                } else if (videoId) {
+                    // Si no hay imagen local pero hay videoId, usar miniatura de YouTube
+                    thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+                } else {
+                    // Fallback final
+                    thumbnailUrl = `assets/nominees/${category.id}/${imageSlug}.jpg`;
+                }
+                
+                // Solo la tarjeta clickeable
                 optionDiv.innerHTML = `
                     <div class="option-image-container horizontal">
                         <img src="${thumbnailUrl}" alt="${option}" class="option-image" 
-                             onerror="this.src='https://img.youtube.com/vi/${videoId}/hqdefault.jpg';">
+                             onerror="this.src='${videoId ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg` : ''}'; if(!this.src) this.style.display='none';">
                     </div>
                     <div class="option-content">
                         <div class="option-title">${option}</div>
-                        ${videoId ? `
-                            <a href="https://youtu.be/${videoId}" target="_blank" class="youtube-button" onclick="event.stopPropagation();">
-                                <span class="youtube-icon">▶</span> Ver en YouTube
-                            </a>
-                        ` : '<span class="tbd-label">TBD</span>'}
                     </div>
                 `;
+                
+                // Crear el botón como elemento SEPARADO
+                if (videoId) {
+                    const buttonContainer = document.createElement('div');
+                    buttonContainer.className = 'youtube-button-container';
+                    
+                    const youtubeButton = document.createElement('a');
+                    youtubeButton.href = `https://youtu.be/${videoId}`;
+                    youtubeButton.target = '_blank';
+                    youtubeButton.className = 'youtube-button';
+                    youtubeButton.innerHTML = '<span class="youtube-icon">▶</span> Ver en YouTube';
+                    
+                    // Prevenir que el click se propague al padre
+                    youtubeButton.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                    });
+                    
+                    buttonContainer.appendChild(youtubeButton);
+                    optionDiv.appendChild(buttonContainer);
+                } else {
+                    const tbdContainer = document.createElement('div');
+                    tbdContainer.className = 'youtube-button-container';
+                    tbdContainer.innerHTML = '<span class="tbd-label">TBD</span>';
+                    optionDiv.appendChild(tbdContainer);
+                }
             } else if (category.imageType === 'dupla') {
                 // Para duplas, mostrar dos imágenes lado a lado
                 const images = category.images[option];
@@ -457,7 +492,14 @@ function displayCategory(index) {
                 `;
             }
             
-            optionDiv.addEventListener('click', () => selectOption(category.id, option));
+            // Añadir el listener de selección (común para todos)
+            optionDiv.addEventListener('click', (e) => {
+                // Para YouTube, evitar selección si se hace click en el botón
+                if (category.imageType === 'youtube' && e.target.closest('.youtube-button-container')) {
+                    return; // No hacer nada si se hace click en el contenedor del botón
+                }
+                selectOption(category.id, option);
+            });
             
             votingGrid.appendChild(optionDiv);
             
@@ -503,15 +545,17 @@ function selectOption(categoryId, option) {
     // Save votes to localStorage
     localStorage.setItem('gor2_votes', JSON.stringify(votes));
     
-    // Update display
-    displayCategory(currentCategoryIndex);
+    // Update vote counter
     updateVoteCounter();
     
-    // Auto advance after 0.5 seconds if not on last category
+    // Auto advance after 0.3 seconds if not on last category
     if (currentCategoryIndex < categories.length - 1) {
         setTimeout(() => {
             nextCategory();
-        }, 500);
+        }, 300);
+    } else {
+        // If on last category, just update display
+        displayCategory(currentCategoryIndex);
     }
 }
 
@@ -750,3 +794,309 @@ document.getElementById('confirmRecap').addEventListener('click', () => {
     confirmAndSendVotes();
 });
 document.getElementById('editVotes').addEventListener('click', closeRecapModal);
+document.getElementById('shareRecap').addEventListener('click', generateShareableImage);
+
+// Función para generar imagen compartible 9:16 (1080x1920)
+async function generateShareableImage() {
+    // Obtener el nombre completo del usuario
+    const userData = JSON.parse(localStorage.getItem('gor2_user'));
+    const userName = userData ? `${userData.nombre} ${userData.apellidos}` : 'Usuario';
+    
+    // Crear canvas con dimensiones 9:16 para Instagram Stories/TikTok
+    const canvas = document.createElement('canvas');
+    canvas.width = 1080;
+    canvas.height = 1920;
+    const ctx = canvas.getContext('2d');
+    
+    // Fondo negro puro estilo años 80
+    ctx.fillStyle = '#0a0a0a';
+    ctx.fillRect(0, 0, 1080, 1920);
+    
+    // Grid retro de fondo (estilo Tron)
+    ctx.strokeStyle = 'rgba(255, 107, 53, 0.08)';
+    ctx.lineWidth = 1;
+    for (let i = 0; i < 1920; i += 40) {
+        ctx.beginPath();
+        ctx.moveTo(0, i);
+        ctx.lineTo(1080, i);
+        ctx.stroke();
+    }
+    for (let i = 0; i < 1080; i += 40) {
+        ctx.beginPath();
+        ctx.moveTo(i, 0);
+        ctx.lineTo(i, 1920);
+        ctx.stroke();
+    }
+    
+    // Efecto de líneas de neón en los bordes
+    const neonGradientLeft = ctx.createLinearGradient(0, 0, 100, 0);
+    neonGradientLeft.addColorStop(0, 'rgba(255, 107, 53, 0.4)');
+    neonGradientLeft.addColorStop(1, 'rgba(255, 107, 53, 0)');
+    ctx.fillStyle = neonGradientLeft;
+    ctx.fillRect(0, 0, 100, 1920);
+    
+    const neonGradientRight = ctx.createLinearGradient(980, 0, 1080, 0);
+    neonGradientRight.addColorStop(0, 'rgba(255, 107, 53, 0)');
+    neonGradientRight.addColorStop(1, 'rgba(255, 107, 53, 0.4)');
+    ctx.fillStyle = neonGradientRight;
+    ctx.fillRect(980, 0, 100, 1920);
+    
+    // Borde superior neón grueso
+    const topGradient = ctx.createLinearGradient(0, 0, 0, 20);
+    topGradient.addColorStop(0, '#ff6b35');
+    topGradient.addColorStop(0.5, '#ff4500');
+    topGradient.addColorStop(1, '#ff6b35');
+    ctx.fillStyle = topGradient;
+    ctx.fillRect(0, 0, 1080, 20);
+    
+    // Sombra del borde superior (efecto neón)
+    ctx.shadowColor = '#ff6b35';
+    ctx.shadowBlur = 30;
+    ctx.fillRect(0, 0, 1080, 20);
+    ctx.shadowBlur = 0;
+    
+    // Título con efecto neón
+    ctx.textAlign = 'center';
+    
+    // Sombra/resplandor neón para el título
+    ctx.shadowColor = '#ff6b35';
+    ctx.shadowBlur = 40;
+    ctx.fillStyle = '#ff6b35';
+    ctx.font = 'bold 90px Arial';
+    ctx.fillText('GOR2 AWARDS', 540, 110);
+    
+    // Año con efecto neón más intenso
+    ctx.shadowBlur = 50;
+    ctx.font = 'bold 70px Arial';
+    ctx.fillStyle = '#ffffff';
+    ctx.fillText('2025', 540, 180);
+    ctx.shadowBlur = 0;
+    
+    // Rectángulo con borde neón para el nombre de usuario
+    ctx.strokeStyle = '#ff6b35';
+    ctx.lineWidth = 3;
+    ctx.shadowColor = '#ff6b35';
+    ctx.shadowBlur = 20;
+    ctx.strokeRect(150, 200, 780, 60);
+    ctx.shadowBlur = 0;
+    
+    // Nombre de usuario
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '32px Arial';
+    ctx.fillText(`Votos de ${userName}`, 540, 240);
+    
+    // Líneas decorativas estilo retro
+    for (let i = 0; i < 3; i++) {
+        ctx.strokeStyle = `rgba(255, 107, 53, ${0.6 - i * 0.2})`;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(80, 280 + i * 5);
+        ctx.lineTo(1000, 280 + i * 5);
+        ctx.stroke();
+    }
+    
+    // Renderizar votos (máximo 20 categorías)
+    let yPosition = 320;
+    const lineHeight = 85;
+    const maxCategories = 20;
+    let categoriesShown = 0;
+    
+    categories.forEach((category, index) => {
+        if (categoriesShown >= maxCategories) return;
+        
+        const vote = votes[category.id];
+        const hasVoted = vote !== null && vote !== undefined;
+        
+        // Rectángulo de fondo para cada categoría (estilo cassette/consola retro)
+        if (hasVoted) {
+            ctx.fillStyle = 'rgba(255, 107, 53, 0.08)';
+            ctx.fillRect(90, yPosition - 30, 900, 70);
+            
+            // Borde neón sutil
+            ctx.strokeStyle = 'rgba(255, 107, 53, 0.4)';
+            ctx.lineWidth = 2;
+            ctx.strokeRect(90, yPosition - 30, 900, 70);
+        }
+        
+        // Número de categoría con efecto neón
+        if (hasVoted) {
+            ctx.shadowColor = '#ff6b35';
+            ctx.shadowBlur = 15;
+        }
+        ctx.fillStyle = hasVoted ? '#ff6b35' : '#424242';
+        ctx.beginPath();
+        ctx.arc(120, yPosition, 28, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.shadowBlur = 0;
+        
+        // Borde del círculo
+        ctx.strokeStyle = hasVoted ? '#ff4500' : '#2a2a2a';
+        ctx.lineWidth = 3;
+        ctx.stroke();
+        
+        ctx.fillStyle = '#0a0a0a';
+        ctx.font = 'bold 24px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText((index + 1).toString(), 120, yPosition + 8);
+        
+        // Título de categoría con efecto de resplandor
+        if (hasVoted) {
+            ctx.shadowColor = '#ffffff';
+            ctx.shadowBlur = 8;
+        }
+        ctx.fillStyle = hasVoted ? '#ffffff' : '#666666';
+        ctx.font = 'bold 22px Arial';
+        ctx.textAlign = 'left';
+        ctx.fillText(category.title.toUpperCase(), 170, yPosition + 8);
+        ctx.shadowBlur = 0;
+        
+        // Voto seleccionado
+        if (hasVoted) {
+            // El voto ya es el nombre de la opción, no el índice
+            const selectedOption = vote;
+            
+            // Efecto de resplandor neón en el texto
+            ctx.shadowColor = '#ff6b35';
+            ctx.shadowBlur = 12;
+            ctx.fillStyle = '#ff6b35';
+            ctx.font = '20px Arial';
+            
+            // Función para dividir texto en múltiples líneas
+            const maxWidth = 800; // Ancho máximo del texto reducido por el padding
+            const words = selectedOption.split(' ');
+            let line = '';
+            let lines = [];
+            
+            for (let n = 0; n < words.length; n++) {
+                let testLine = line + words[n] + ' ';
+                let metrics = ctx.measureText(testLine);
+                let testWidth = metrics.width;
+                
+                if (testWidth > maxWidth && n > 0) {
+                    lines.push(line.trim());
+                    line = words[n] + ' ';
+                } else {
+                    line = testLine;
+                }
+            }
+            lines.push(line.trim());
+            
+            // Limitar a 2 líneas como máximo
+            if (lines.length > 2) {
+                lines = lines.slice(0, 2);
+                lines[1] = lines[1].substring(0, lines[1].length - 3) + '...';
+            }
+            
+            // Dibujar cada línea con efecto neón
+            lines.forEach((textLine, lineIndex) => {
+                const prefix = lineIndex === 0 ? '▶ ' : '  ';
+                ctx.fillText(prefix + textLine, 170, yPosition + 38 + (lineIndex * 24));
+            });
+            ctx.shadowBlur = 0;
+        } else {
+            ctx.fillStyle = '#444444';
+            ctx.font = 'italic 18px Arial';
+            ctx.fillText('[ SIN VOTO ]', 170, yPosition + 38);
+        }
+        
+        yPosition += lineHeight;
+        categoriesShown++;
+    });
+    
+    // Footer estilo retro
+    const footerY = 1850;
+    
+    // Líneas decorativas superiores
+    for (let i = 0; i < 3; i++) {
+        ctx.strokeStyle = `rgba(255, 107, 53, ${0.6 - i * 0.2})`;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(80, footerY - 60 + i * 5);
+        ctx.lineTo(1000, footerY - 60 + i * 5);
+        ctx.stroke();
+    }
+    
+    // Borde inferior neón grueso
+    const bottomGradient = ctx.createLinearGradient(0, 1900, 0, 1920);
+    bottomGradient.addColorStop(0, '#ff6b35');
+    bottomGradient.addColorStop(0.5, '#ff4500');
+    bottomGradient.addColorStop(1, '#ff6b35');
+    ctx.fillStyle = bottomGradient;
+    ctx.fillRect(0, 1900, 1080, 20);
+    
+    // Sombra del borde inferior (efecto neón)
+    ctx.shadowColor = '#ff6b35';
+    ctx.shadowBlur = 30;
+    ctx.fillRect(0, 1900, 1080, 20);
+    ctx.shadowBlur = 0;
+    
+    // Texto del footer con efecto neón
+    ctx.shadowColor = '#ff6b35';
+    ctx.shadowBlur = 15;
+    ctx.fillStyle = '#ff6b35';
+    ctx.font = 'bold 26px Arial';
+    ctx.textAlign = 'center';
+    ctx.fillText('GOR2.com', 540, footerY - 10);
+    
+    ctx.shadowBlur = 10;
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '22px Arial';
+    ctx.fillText('#GOR2Awards2025', 540, footerY + 20);
+    ctx.shadowBlur = 0;
+    
+    // Convertir canvas a blob y descargar
+    canvas.toBlob((blob) => {
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.download = `GOR2-Awards-2025-${userName.replace(/\s+/g, '-')}.png`;
+        link.href = url;
+        link.click();
+        URL.revokeObjectURL(url);
+        
+        // Feedback visual
+        showNotification('¡Imagen descargada! 📸');
+    }, 'image/png');
+}
+
+// Función auxiliar para mostrar notificaciones
+function showNotification(message) {
+    const notification = document.createElement('div');
+    notification.textContent = message;
+    notification.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: linear-gradient(135deg, #ff6b35 0%, #ff4500 100%);
+        color: white;
+        padding: 20px 40px;
+        border-radius: 12px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        z-index: 10001;
+        box-shadow: 0 10px 40px rgba(255, 107, 53, 0.5);
+        animation: fadeInOut 2s ease-in-out;
+    `;
+    
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.remove();
+    }, 2000);
+}
+
+// Añadir animación de notificación
+if (!document.querySelector('#notificationAnimation')) {
+    const style = document.createElement('style');
+    style.id = 'notificationAnimation';
+    style.textContent = `
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+            20% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+            80% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+            100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+        }
+    `;
+    document.head.appendChild(style);
+}
+

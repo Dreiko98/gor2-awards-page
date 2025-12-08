@@ -1086,11 +1086,20 @@ body::after {
 }
 
 /* Estilos para botones de YouTube */
+/* Contenedor del botón - completamente separado */
+.youtube-button-container {
+    display: flex;
+    justify-content: center;
+    padding: 12px 0 8px 0;
+    margin-top: auto;
+    pointer-events: auto; /* El contenedor del botón NO propaga clicks */
+}
+
 .youtube-button {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
-    margin-top: 12px;
     padding: 10px 20px;
     background: linear-gradient(135deg, #FF0000, #CC0000);
     color: white;
@@ -1100,6 +1109,9 @@ body::after {
     font-weight: 600;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+    cursor: pointer;
+    position: relative;
+    z-index: 10; /* Asegurar que esté por encima */
 }
 
 .youtube-button:hover {
@@ -1125,7 +1137,6 @@ body::after {
 
 .tbd-label {
     display: inline-block;
-    margin-top: 12px;
     padding: 8px 16px;
     background: var(--dark-gray);
     color: var(--text-gray);
@@ -1248,21 +1259,13 @@ body::after {
         inset 0 1px 0 rgba(255, 107, 53, 0.1);
     position: relative;
     overflow: hidden;
-    max-height: 90vh; /* Limitar altura máxima */
-}
-
-/* Permitir scroll en modal de recap */
-#recapModal .modal-content {
-    overflow: visible;
     max-height: 90vh;
-    display: flex;
-    flex-direction: column;
 }
 
-#recapModal .modal-content > div {
-    overflow-y: auto;
+/* Excepción para el modal de recap - debe permitir scroll */
+.modal-content.modal-recap {
+    overflow: visible;
 }
-
 
 .modal-content::before {
     content: '';
@@ -1359,28 +1362,32 @@ body::after {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 30px;
-    padding-bottom: 20px;
+    margin-bottom: 15px;
+    padding-bottom: 12px;
     border-bottom: 2px solid var(--dark-gray);
+    flex-shrink: 0;
 }
 
 .modal-header h2 {
     margin: 0;
+    font-size: 1.4rem;
 }
 
 .close-modal-btn {
     background: transparent;
     border: none;
     color: var(--text-gray);
-    font-size: 2rem;
+    font-size: 1.8rem;
     cursor: pointer;
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
     transition: all 0.3s ease;
+    z-index: 10001;
+    position: relative;
 }
 
 .close-modal-btn:hover {
@@ -1394,41 +1401,46 @@ body::after {
    ============================================ */
 
 .modal-recap {
-    max-width: 800px;
-    max-height: 85vh;
-    overflow-y: auto;
+    max-width: 1400px;
+    width: 98%;
+    max-height: 98vh;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    overflow: visible;
 }
 
 .recap-info {
     background: linear-gradient(135deg, rgba(255, 107, 53, 0.15) 0%, rgba(255, 69, 0, 0.1) 100%);
     border: 2px solid var(--accent-orange);
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 25px;
+    border-radius: 10px;
+    padding: 10px 12px;
+    margin-bottom: 10px;
     text-align: center;
+    flex-shrink: 0;
 }
 
 .recap-name {
-    font-size: 1.3rem;
+    font-size: 0.95rem;
     font-weight: 700;
     color: var(--accent-orange);
-    margin-bottom: 10px;
+    margin-bottom: 4px;
 }
 
 .recap-total {
-    font-size: 1.1rem;
+    font-size: 0.85rem;
     color: var(--text-white);
     margin: 0;
 }
 
 .recap-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 25px;
-    max-height: 400px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    padding-right: 5px;
+    margin-bottom: 10px;
     overflow-y: auto;
-    padding-right: 10px;
+    max-height: calc(98vh - 200px);
 }
 
 /* Custom scrollbar for recap grid */
@@ -1444,17 +1456,23 @@ body::after {
 .recap-grid::-webkit-scrollbar-thumb {
     background: var(--accent-orange);
     border-radius: 10px;
+    transition: background 0.3s ease;
+}
+
+.recap-grid::-webkit-scrollbar-thumb:hover {
+    background: var(--bright-orange);
 }
 
 .recap-item {
     background: rgba(26, 26, 26, 0.6);
     border: 2px solid var(--dark-gray);
-    border-radius: 10px;
-    padding: 15px 20px;
+    border-radius: 8px;
+    padding: 6px 8px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    gap: 5px;
     transition: all 0.3s ease;
+    min-height: 65px;
 }
 
 .recap-item.voted {
@@ -1470,17 +1488,16 @@ body::after {
 .recap-category {
     display: flex;
     align-items: center;
-    gap: 15px;
-    flex: 1;
+    gap: 7px;
 }
 
 .recap-number {
     background: var(--accent-orange);
     color: var(--primary-black);
     font-weight: 900;
-    font-size: 1rem;
-    width: 35px;
-    height: 35px;
+    font-size: 0.75rem;
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -1495,33 +1512,28 @@ body::after {
 
 .recap-category h3 {
     margin: 0;
-    font-size: 1rem;
+    font-size: 0.75rem;
     color: var(--text-white);
     font-weight: 600;
+    line-height: 1.2;
 }
 
 .recap-vote {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 5px;
+    padding-left: 31px;
 }
 
 .vote-icon {
-    font-size: 1.3rem;
-}
-
-.recap-item.voted .vote-icon {
     color: var(--accent-orange);
-}
-
-.recap-item.not-voted .vote-icon {
-    color: var(--text-gray);
+    font-size: 0.8rem;
 }
 
 .vote-name {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--text-white);
+    font-size: 0.75rem;
+    color: var(--accent-orange);
+    font-weight: 600;
 }
 
 .recap-item.not-voted .vote-name {
@@ -1532,19 +1544,44 @@ body::after {
 
 .recap-footer {
     display: flex;
-    gap: 15px;
-    padding-top: 20px;
+    gap: 10px;
+    padding-top: 12px;
     border-top: 2px solid var(--dark-gray);
+    flex-shrink: 0;
+}
+
+.modal-btn-share {
+    flex: 1;
+    background: linear-gradient(135deg, #1da1f2 0%, #0d8bd9 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px 15px;
+    font-size: 0.85rem;
+}
+
+.modal-btn-share:hover {
+    background: linear-gradient(135deg, #0d8bd9 0%, #0a7ac4 100%);
+    box-shadow: 0 5px 20px rgba(29, 161, 242, 0.4);
+}
+
+.share-icon {
+    font-size: 1rem;
 }
 
 .modal-btn-primary {
     flex: 2;
     background: linear-gradient(135deg, var(--accent-orange) 0%, var(--deep-orange) 100%);
+    padding: 10px 15px;
+    font-size: 0.85rem;
 }
 
 .modal-btn-secondary {
     flex: 1;
     background: var(--dark-gray);
+    padding: 10px 15px;
+    font-size: 0.85rem;
 }
 
 .modal-btn-secondary:hover {
@@ -1623,25 +1660,32 @@ body::after {
     border-bottom: 2px solid var(--dark-gray);
     position: relative;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Imagen vertical para personas */
 .option-image-container.vertical {
     aspect-ratio: 3 / 4;
-    max-height: 350px; /* Aumentado de 250px a 350px */
+    height: 350px;
+    max-height: 350px;
 }
 
 /* Imagen horizontal para otras categorías */
 .option-image-container.horizontal {
     aspect-ratio: 16 / 9;
-    max-height: 250px; /* Aumentado de 180px a 250px */
+    height: 200px;
+    max-height: 200px;
 }
 
 .option-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
     transition: all 0.3s ease;
+    display: block;
 }
 
 .option-image-placeholder {
@@ -1673,6 +1717,71 @@ body::after {
    ============================================ */
 
 @media (max-width: 768px) {
+    .modal-content {
+        padding: 30px 20px;
+        max-width: 95%;
+    }
+    
+    .modal-recap {
+        padding: 20px 15px;
+        max-height: 90vh;
+    }
+    
+    .recap-info {
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+    
+    .recap-name {
+        font-size: 1.1rem;
+    }
+    
+    .recap-total {
+        font-size: 1rem;
+    }
+    
+    .recap-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .recap-item {
+        padding: 10px 12px;
+    }
+    
+    .recap-number {
+        width: 26px;
+        height: 26px;
+        font-size: 0.8rem;
+    }
+    
+    .recap-category h3 {
+        font-size: 0.8rem;
+    }
+    
+    .recap-vote {
+        padding-left: 36px;
+    }
+    
+    .vote-name {
+        font-size: 0.8rem;
+    }
+    
+    .recap-footer {
+        flex-direction: column;
+        gap: 10px;
+        padding-top: 15px;
+    }
+    
+    .modal-btn-share,
+    .modal-btn-primary,
+    .modal-btn-secondary {
+        flex: 1;
+        width: 100%;
+        font-size: 0.85rem;
+        padding: 10px 15px;
+    }
+    
     .main-title {
         font-size: 2.8rem;
     }
@@ -1748,6 +1857,39 @@ body::after {
    MOBILE SMALL (< 480px)
    =========================== */
 @media (max-width: 480px) {
+    .modal-recap {
+        padding: 15px 10px;
+        width: 95%;
+    }
+    
+    .recap-info {
+        padding: 12px;
+    }
+    
+    .recap-item {
+        padding: 10px 12px;
+    }
+    
+    .recap-category h3 {
+        font-size: 0.85rem;
+        line-height: 1.3;
+    }
+    
+    .vote-name {
+        font-size: 0.8rem;
+    }
+    
+    .modal-btn-share,
+    .modal-btn-primary,
+    .modal-btn-secondary {
+        font-size: 0.85rem;
+        padding: 10px 15px;
+    }
+    
+    .share-icon {
+        font-size: 1rem;
+    }
+    
     .countdown-overlay {
         padding: 10px;
     }

@@ -75,7 +75,7 @@
 
         <!-- Vote Counter -->
         <div class="vote-counter">
-            <span>VOTOS: <span id="voteCount">0</span> / 21</span>
+            <span>VOTOS: <span id="voteCount">0</span> / 18</span>
         </div>
 
         <!-- Submit Button (shown on last category) -->
@@ -118,18 +118,23 @@
             </div>
             <div class="recap-info">
                 <p class="recap-name">Votante: <span id="recapVoterName"></span></p>
-                <p class="recap-total">Total de votos: <span id="recapTotalVotes"></span>/21</p>
+                <p class="recap-total">Total de votos: <span id="recapTotalVotes"></span>/18</p>
             </div>
             <div id="recapGrid" class="recap-grid">
                 <!-- Recap will be loaded here -->
             </div>
             <div class="recap-footer">
+                <button id="shareRecap" class="modal-btn modal-btn-share">
+                    <span class="share-icon">📸</span> COMPARTIR RESUMEN
+                </button>
                 <button id="confirmRecap" class="modal-btn modal-btn-primary">CONFIRMAR Y ENVIAR</button>
                 <button id="editVotes" class="modal-btn modal-btn-secondary">EDITAR VOTOS</button>
             </div>
         </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="voting.js"></script>
 </body>
 </html>
+
