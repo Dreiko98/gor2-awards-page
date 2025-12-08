@@ -59,6 +59,7 @@ const categories = [
         youtubeVideos: {
             "Los pibes cantando Superestrella": "k6VGWcgqXs4",
             "Germán y Gajas bailan y Gajas se pica": "8BQgEikwL2I",
+            "Oscar y Gajas carreando al futbolín en Oviedo": "yLK6JtyDOrM",
             "Salsa buffalo": "JhqK2PGUeQ8",
             "DEP Búho": "X-Ilcg0rOzw"
         },
@@ -284,7 +285,11 @@ const categories = [
         },
         images: {
             "Fuente de Rubielos 2": "assets/vlog/rubielos.jpg",
+            "Oviedo (TBD)": "assets/vlog/mini_oviedo.jpg",
             "Roma": "assets/vlog/roma.jpg"
+        },
+        comingSoon: {
+            "Oviedo (TBD)": "31/12/2025"
         }
     }
 ];
@@ -409,6 +414,7 @@ function displayCategory(index) {
             } else if (category.imageType === 'youtube') {
                 // Para videos de YouTube, crear la tarjeta SIN botón
                 const videoId = category.youtubeVideos && category.youtubeVideos[option];
+                const comingSoonDate = category.comingSoon && category.comingSoon[option];
                 
                 // Priorizar imagen local si está disponible, sino usar miniatura de YouTube
                 let thumbnailUrl;
@@ -435,7 +441,12 @@ function displayCategory(index) {
                 `;
                 
                 // Crear el botón como elemento SEPARADO
-                if (videoId) {
+                if (comingSoonDate) {
+                    const buttonContainer = document.createElement('div');
+                    buttonContainer.className = 'youtube-button-container';
+                    buttonContainer.innerHTML = `<span class="coming-soon-label">🚀 PRÓXIMO: ${comingSoonDate}</span>`;
+                    optionDiv.appendChild(buttonContainer);
+                } else if (videoId) {
                     const buttonContainer = document.createElement('div');
                     buttonContainer.className = 'youtube-button-container';
                     

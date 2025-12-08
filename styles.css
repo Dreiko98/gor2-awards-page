@@ -1146,6 +1146,40 @@ body::after {
     letter-spacing: 2px;
 }
 
+.coming-soon-label {
+    display: inline-block;
+    padding: 10px 24px;
+    background: linear-gradient(135deg, var(--accent-orange) 0%, var(--deep-orange) 100%);
+    color: var(--text-white);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    box-shadow: 0 0 20px rgba(255, 107, 53, 0.6), inset 0 0 20px rgba(255, 107, 53, 0.2);
+    animation: comingSoonGlow 2s ease-in-out infinite, comingSoonPulse 2.5s ease-in-out infinite;
+    position: relative;
+    border: 2px solid var(--accent-orange);
+}
+
+@keyframes comingSoonGlow {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(255, 107, 53, 0.6), inset 0 0 20px rgba(255, 107, 53, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(255, 107, 53, 0.9), inset 0 0 30px rgba(255, 107, 53, 0.4);
+    }
+}
+
+@keyframes comingSoonPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
 .vote-counter {
     text-align: center;
     margin: 60px 0 40px 0;
